@@ -10,6 +10,8 @@
 	<link rel="manifest" href="assets/site.webmanifest" />
 
 	<script type="text/javascript" src="three.r124.min.js"></script>
+    <link 	href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
 	<style type="text/css">		
 		*
 		{
@@ -18,23 +20,34 @@
 		}
 	</style>
 </head>
-<body>
-	<header>
-        <h1>Lucas Della Santina</h1>
-        <p>Ingeniero Electrónico | Desarrollo y Gestión de Sistemas</p>
+<body	class="bg-gray-100 text-gray-900">
+    <header class="bg-white shadow-md py-6">
+        <div class="container mx-auto text-center">
+            <h1 class="text-4xl font-bold">Lucas Della Santina</h1>
+            <p class="text-xl mt-2">Ingeniero Electrónico | Desarrollo y Gestión de Sistemas</p>
+        </div>
     </header>
-    <section id="proyectos">
-        <h2>Proyectos Destacados</h2>
-        <div class="proyecto">
-            <img src="proyecto1.png" alt="Proyecto 1">
-            <h3>Proyecto 1</h3>
-            <p>Descripción breve del proyecto...</p>
-            <a href="#">Ver más</a>
+    <section id="proyectos" class="py-10">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-6">Proyectos Destacados</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="proyecto bg-white p-6 rounded-lg shadow-md">
+                    <img src="proyecto1.png" alt="Proyecto 1" class="w-full h-48 object-cover rounded-t-lg">
+                    <h3 class="text-2xl font-bold mt-4">Proyecto 1</h3>
+                    <p class="mt-2">Descripción breve del proyecto...</p>
+                    <a href="#" class="text-blue-500 mt-4 inline-block">Ver más</a>
+                </div>
+                <!-- Repite para más proyectos -->
+            </div>
         </div>
     </section>
-    <footer>
-        <p>Contacto: lucas@email.com</p>
+    <footer class="bg-white shadow-md py-6">
+        <div class="container mx-auto text-center">
+            <p>Contacto: lucas@email.com</p>
+        </div>
     </footer>
     <script type="module" src="main.js"></script>
+	
+
 </body>
 </html>
