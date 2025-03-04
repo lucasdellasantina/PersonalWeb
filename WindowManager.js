@@ -9,7 +9,7 @@ class WindowManager
 	
 	constructor ()
 	{
-		let that = this;
+		const that = this;
 
 		// event listener for when localStorage is changed from another window
 		addEventListener("storage", (event) => 
