@@ -108,7 +108,23 @@
         AOS.init();
     </script>
     
+    <script>
+    setTimeout(() => {
+        console.log('%c¡Detente!', 'color: red; font-size: 40px; font-weight: bold;');
+        console.log(
+        '%cEsta función del navegador está pensada para desarrolladores.\n' +
+        'Si alguien te indicó que copiaras y pegaras algo aquí para habilitar una función de Facebook o para "hackear" la cuenta de alguien, se trata de un fraude.\n\n' +
+        'Si lo haces, esta persona podrá acceder a tu cuenta.\n\n' +
+        'Consulta https://www.facebook.com/selfxss para obtener más información.',
+        'font-size: 16px;'
+        );
+    }, 0);
+    </script>
+<!-- 
+
     <script src="assets/storageHandler.js"></script>
+-->
+
 
 </body>
 
