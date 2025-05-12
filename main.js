@@ -1,3 +1,11 @@
+// Advertencia de seguridad Console LOG
+
+console.log('%c¡Advertencia de seguridad!', 'color: red; font-size: 40px; font-weight: bold;');
+console.log('%cEste espacio está pensado para desarrolladores. Si alguien te pidió que pegues código aquí para obtener funciones ocultas o hackear algo, es una estafa.', 'font-size: 18px');
+console.log('%c Podria ser victima de un ataque del estilo Self XSS', 'font-size: 18px; color: red;');
+
+
+
 import WindowManager from './WindowManager.js'
 
 
