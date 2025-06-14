@@ -275,28 +275,13 @@
 
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js" integrity="sha512-OK5Gd9do2tR6Q+2007ao1+vNRteRGzM3ebzclTtXq4+1X/HsY6R8tvM+CeNy4dyMP5gajpqjXX5pzf5pMOde2Q==" crossorigin="anonymous"></script>
   <script>
-
     particlesJS("particles", {
       "particles": {
-        "number": {
-          "value": 80,
-          "density": {
-            "enable": true,
-            "value_area": 800
-          }
-        },
-        "color": {
-          "value": ["#00bfff", "#1e90ff", "#87cefa"]
-        },
-        "shape": {
-          "type": "circle"
-        },
-        "opacity": {
-          "value": 0.5
-        },
-        "size": {
-          "value": 3
-        },
+        "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+        "color": { "value": ["#00bfff", "#1e90ff", "#87cefa"] },
+        "shape": { "type": "circle" },
+        "opacity": { "value": 0.5 },
+        "size": { "value": 3 },
         "line_linked": {
           "enable": true,
           "distance": 150,
@@ -304,34 +289,26 @@
           "opacity": 0.4,
           "width": 1
         },
-        "move": {
-          "enable": true,
-          "speed": 2
-        }
+        "move": { "enable": true, "speed": 2 }
       },
       "interactivity": {
         "detect_on": "canvas",
         "events": {
-          "onhover": {
-            "enable": true,
-            "mode": "repulse"
-          },
-          "onclick": {
-            "enable": true,
-            "mode": "push"
-          }
+          "onhover": { "enable": true, "mode": "repulse" },
+          "onclick": { "enable": true, "mode": "push" }
         },
         "modes": {
-          "repulse": {
-            "distance": 100
-          },
-          "push": {
-            "particles_nb": 4
-          }
+          "repulse": { "distance": 100 },
+          "push": { "particles_nb": 4 }
         }
       },
       "retina_detect": true
     });
+
+    function switchLanguage(isEnglish) {
+      document.querySelectorAll('.lang-es').forEach(el => el.style.display = isEnglish ? 'none' : 'inline');
+      document.querySelectorAll('.lang-en').forEach(el => el.style.display = isEnglish ? 'inline' : 'none');
+    }
   </script>
 
 <!--     SelfXSS  -->
