@@ -16,19 +16,17 @@
       })(window, document, "clarity", "script", "rz1pnv8gvy");
   </script>
   <!-- Fingerprint     --> 
-  <script>
-    // Initialize the agent on page load.
-    const fpPromise = import('https://fpjscdn.net/v3/SzfYfum5x0X6FjxrCYhC') 
-      .then(FingerprintJS => FingerprintJS.load())
 
-    // Get the visitorId when you need it.
-    fpPromise
-      .then(fp => fp.get())
-      .then(result => {
-        const visitorId = result.visitorId
-        console.log(visitorId)
-      })
-  </script>
+  <script src="https://cdn.overpoweredjs.com/loader/opjs"></script>
+    const fp = await opjs({ API_KEY: "public_8W5zJQ1h-8vCOTFEOd3CO44ZZB8Iyu2pwQG" })
+
+<script>
+  async function initFingerprint() {
+    const fp = await opjs({ API_KEY: "public_8W5zJQ1h-8vCOTFEOd3CO44ZZB8Iyu2pwQG" });
+    console.log("Fingerprint:", fp.visitorId);
+  }
+</script>
+
 
   <!-- Favico DATA    -->
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
