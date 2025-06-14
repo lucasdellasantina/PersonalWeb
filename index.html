@@ -18,8 +18,17 @@
   <!-- Fingerprint     --> 
 
   <script src="https://cdn.overpoweredjs.com/loader/opjs"></script>
-    const fp = await opjs({ API_KEY: "public_8W5zJQ1h-8vCOTFEOd3CO44ZZB8Iyu2pwQG" })
+  
+  <script>
+    async function initFingerprint() {
+      const fp = await opjs({ API_KEY: "public_8W5zJQ1h-8vCOTFEOd3CO44ZZB8Iyu2pwQG" });
+      console.log("Fingerprint:", fp.visitorId);
+    }
+  </script>
 
+<<<<<<< HEAD
+
+=======
 <script>
   async function initFingerprint() {
     const fp = await opjs({ API_KEY: "public_8W5zJQ1h-8vCOTFEOd3CO44ZZB8Iyu2pwQG" });
@@ -28,6 +37,7 @@
 </script>
 
 
+>>>>>>> 4bcbfdc67e641f93c053c273b6f927bfd4c16f35
   <!-- Favico DATA    -->
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
     <link rel="icon" type="image/png" href="assets/favicon-96x96.png" sizes="96x96">
