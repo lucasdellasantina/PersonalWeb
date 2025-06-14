@@ -18,7 +18,7 @@
   <!-- Fingerprint     --> 
   <script>
     // Initialize the agent on page load.
-    const fpPromise = import('https://fpjscdn.net/v3/SzfYfum5x0X6FjxrCYhC')
+    const fpPromise = import('https://fpjscdn.net/v3/SzfYfum5x0X6FjxrCYhC') 
       .then(FingerprintJS => FingerprintJS.load())
 
     // Get the visitorId when you need it.
@@ -53,7 +53,6 @@
       color: white;
       background-color: #000000;
     }
-
     #particles {
       position: fixed;
       width: 100%;
@@ -62,16 +61,14 @@
       left: 0;
       z-index: -1;
     }
-
     header, section, footer {
-      background-color: rgba(0, 0, 0, 0); /* fully transparent */
+      background-color: rgba(0, 0, 0, 0);
       padding: 20px;
     }
-
     header {
       text-align: center;
+      position: relative;
     }
-
     nav ul {
       list-style: none;
       padding: 0;
@@ -79,23 +76,160 @@
       justify-content: center;
       gap: 20px;
     }
-
     nav a {
       color: white;
       text-decoration: none;
     }
-
     section {
       padding: 60px 20px;
       text-align: center;
     }
-
     footer {
       text-align: center;
       padding: 20px;
     }
+    .toggle-container {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 34px;
+    }
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0; left: 0;
+      right: 0; bottom: 0;
+      background-color: #ccc;
+      transition: .4s;
+      border-radius: 34px;
+    }
+    .slider:before {
+      position: absolute;
+      content: "ES";
+      height: 26px;
+      width: 26px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      color: black;
+      text-align: center;
+      line-height: 26px;
+      font-size: 12px;
+      transition: .4s;
+      border-radius: 50%;
+    }
+    input:checked + .slider {
+      background-color: #2196F3;
+    }
+    input:checked + .slider:before {
+      transform: translateX(26px);
+      content: "EN";
+    }
+    .lang-es { display: block; }
+    .lang-en { display: none; }
   </style>
 </head>
+<body>
+  <div id="particles"></div>
+
+  <header>
+    <h1>Lucas Della Santina</h1>
+    <div class="toggle-container">
+      <label class="switch">
+        <input type="checkbox" id="langToggle" onchange="switchLanguage(this.checked)">
+        <span class="slider"></span>
+      </label>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#about"><span class="lang-es">Sobre Mí</span><span class="lang-en">About Me</span></a></li>
+        <li><a href="#projects"><span class="lang-es">Proyectos</span><span class="lang-en">Projects</span></a></li>
+        <li><a href="#skills"><span class="lang-es">Habilidades</span><span class="lang-en">Skills</span></a></li>
+        <li><a href="#contact"><span class="lang-es">Contacto</span><span class="lang-en">Contact</span></a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="about">
+    <h2><span class="lang-es">Sobre Mí</span><span class="lang-en">About Me</span></h2>
+    <p class="lang-es">Soy ingeniero electrónico, apasionado por la optimización de procesos, IoT, domótica y seguridad informática, con experiencia en el desarrollo y gestión de mejoras en sistemas. Me integro rápidamente en equipos interdisciplinarios para identificar la causa raíz de problemas y desarrollar soluciones eficientes con los recursos disponibles.
+
+    Cuento con habilidades en administración de sistemas, redes y control de procesos, con un enfoque práctico que me permite priorizar tareas para lograr objetivos de manera rápida y eficiente. Me motiva el aprendizaje continuo y la adquisición de nuevas herramientas para potenciar mi crecimiento profesional y académico.</p>
+</p>
+    <p class="lang-en">I am an electronic engineer, passionate about process optimization, IoT, home automation and cybersecurity...</p>
+  </section>
+
+  <section id="projects">
+    <h2><span class="lang-es">Proyectos</span><span class="lang-en">Projects</span></h2>
+    <p class="lang-es">Descripción de proyectos...</p>
+    <p class="lang-en">Project descriptions...</p>
+  </section>
+
+  <section id="skills">
+    <h2><span class="lang-es">Habilidades</span><span class="lang-en">Skills</span></h2>
+    <p class="lang-es">Lista de habilidades...</p>
+    <p class="lang-en">List of skills...</p>
+  </section>
+
+  <section id="contact">
+    <h2><span class="lang-es">Contacto</span><span class="lang-en">Contact</span></h2>
+    <p class="lang-es">Formulario de contacto...</p>
+    <p class="lang-en">Contact form...</p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Lucas Della Santina</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS("particles", {
+      "particles": {
+        "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+        "color": { "value": ["#00bfff", "#1e90ff", "#87cefa"] },
+        "shape": { "type": "circle" },
+        "opacity": { "value": 0.5 },
+        "size": { "value": 3 },
+        "line_linked": {
+          "enable": true,
+          "distance": 150,
+          "color": "#1e90ff",
+          "opacity": 0.4,
+          "width": 1
+        },
+        "move": { "enable": true, "speed": 2 }
+      },
+      "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+          "onhover": { "enable": true, "mode": "repulse" },
+          "onclick": { "enable": true, "mode": "push" }
+        },
+        "modes": {
+          "repulse": { "distance": 100 },
+          "push": { "particles_nb": 4 }
+        }
+      },
+      "retina_detect": true
+    });
+
+    function switchLanguage(isEnglish) {
+      document.querySelectorAll('.lang-es').forEach(el => el.style.display = isEnglish ? 'none' : 'inline');
+      document.querySelectorAll('.lang-en').forEach(el => el.style.display = isEnglish ? 'inline' : 'none');
+    }
+  </script>
+</body>
+
 <body>
 
   <div id="particles"></div>
