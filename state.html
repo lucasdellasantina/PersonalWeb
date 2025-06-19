@@ -1,0 +1,113 @@
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Estado de Servicios</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f6f8;
+      margin: 0;
+      padding: 2rem;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      color: #0078d4;
+      margin-bottom: 2rem;
+    }
+
+    .service-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .service-info {
+      max-width: calc(100% - 100px);
+    }
+
+    .service-name {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    .service-meta {
+      font-size: 0.9rem;
+      color: #666;
+      margin-top: 0.3rem;
+    }
+
+    .service-status i {
+      font-size: 1.6rem;
+      animation: pulse 1.5s infinite;
+    }
+
+    /* Animación general */
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 0.85; }
+      50% { transform: scale(1.15); opacity: 1; }
+      100% { transform: scale(1); opacity: 0.85; }
+    }
+
+    /* Colores por estado */
+    .status-up { color: #28a745; }     /* verde */
+    .status-down { color: #dc3545; animation-duration: 0.8s; }  /* rojo */
+    .status-grace { color: #ffc107; animation-duration: 2s; }   /* naranja */
+  </style>
+</head>
+<body>
+
+<h1>🖥️ Estado de Servicios</h1>
+<div id="services"></div>
+
+<script>
+const API_KEY = "hcr_LaLJ4Ii82MoxyCFZ8Ew3tQ6c3GSq"; // 🔒 Reemplazá por tu API key personal
+fetch("https://healthchecks.io/api/v3/checks/", {
+  headers: { "X-Api-Key": API_KEY }
+})
+.then(res => res.json())
+.then(data => {
+  const container = document.getElementById("services");
+
+  data.checks.forEach(check => {
+    const statusClass = check.status === "up"
+      ? "status-up"
+      : check.status === "down"
+      ? "status-down"
+      : "status-grace";
+
+    const lastPing = new Date(check.last_ping).toLocaleString("es-AR");
+
+    container.innerHTML += `
+      <div class="service-card">
+        <div class="service-info">
+          <div class="service-name">${check.name}</div>
+          <div class="service-meta">Último ping: ${lastPing}</div>
+        </div>
+        <div class="service-status">
+          <i class="fas fa-circle ${statusClass}" title="${check.status}"></i>
+        </div>
+      </div>
+    `;
+  });
+})
+.catch(err => {
+  document.getElementById("services").innerHTML = `<p style="color:red;">Error: ${err.message}</p>`;
+});
+</script>
+
+</body>
+</html>
+
+
