@@ -1,251 +1,396 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- SNYK META DATA    --> 
-  <meta name="probely-verification" content="256d92b6-69c4-4ad9-b5f8-d62a25a1385c" />
-  <!-- Cloudflare Web Analytics -->
-  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "87bea264ede5475bb669bc979b1a6005"}'></script><!-- End Cloudflare Web Analytics -->
-  <!-- Cloudflare Web Analytics -->
-  <script src="https://static.cloudflareinsights.com/beacon.min.js" integrity="sha384-hJDP7NI6FO4138GY4jrpuIrG8Efal6X0upzc6/p/SGWC2GA1v3ktQ/8krA0yHfkl" crossorigin="anonymous"></script>  
-  
-  <!-- Clarity META DATA    --> 
-  <script type="text/javascript">
-      (function(c,l,a,r,i,t,y){
-          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-      })(window, document, "clarity", "script", "rz1pnv8gvy");
-  </script>
-  <!-- Fingerprint     --> 
-
-  <script src="https://cdn.overpoweredjs.com/loader/opjs"></script>
-  
-  <script>
-    async function initFingerprint() {
-      const fp = await opjs({ API_KEY: "public_8W5zJQ1h-8vCOTFEOd3CO44ZZB8Iyu2pwQG" });
-      console.log("Fingerprint:", fp.visitorId);
-    }
-  </script>
-
-  <!-- Favico DATA    -->
-    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
-    <link rel="icon" type="image/png" href="assets/favicon-96x96.png" sizes="96x96">
-    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-    <link rel="shortcut icon" href="assets/favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
-    <meta name="apple-mobile-web-app-title" content="Lucas Della Santina">
-    <link rel="manifest" href="assets/site.webmanifest">
-
-
-  <title>Lucas Della Santina</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-  <style>
-    html {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      font-family: 'Roboto', sans-serif;
-      color: white;
-      background-color: #000000;
-    }
-    #particles {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      z-index: -1;
-    }
-    header, section, footer {
-      background-color: rgba(0, 0, 0, 0);
-      padding: 20px;
-    }
-    header {
-      text-align: center;
-      position: relative;
-    }
-    nav ul {
-      list-style: none;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-    }
-    nav a {
-      color: white;
-      text-decoration: none;
-    }
-    section {
-      padding: 60px 20px;
-      text-align: center;
-    }
-    footer {
-      text-align: center;
-      padding: 20px;
-    }
-    .toggle-container {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-    }
-    .switch {
-      position: relative;
-      display: inline-block;
-      width: 60px;
-      height: 34px;
-    }
-    .switch input {
-      opacity: 0;
-      width: 0;
-      height: 0;
-    }
-    .slider {
-      position: absolute;
-      cursor: pointer;
-      top: 0; left: 0;
-      right: 0; bottom: 0;
-      background-color: #ccc;
-      transition: .4s;
-      border-radius: 34px;
-    }
-    .slider:before {
-      position: absolute;
-      content: "ES";
-      height: 26px;
-      width: 26px;
-      left: 4px;
-      bottom: 4px;
-      background-color: white;
-      color: black;
-      text-align: center;
-      line-height: 26px;
-      font-size: 12px;
-      transition: .4s;
-      border-radius: 50%;
-    }
-    input:checked + .slider {
-      background-color: #2196F3;
-    }
-    input:checked + .slider:before {
-      transform: translateX(26px);
-      content: "EN";
-    }
-    .lang-es { display: block; }
-    .lang-en { display: none; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Ingeniero Electrónico</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div id="particles"></div>
-
-  <header>
-    <h1>Lucas Della Santina</h1>
-    <div class="toggle-container">
-      <label class="switch">
-        <input type="checkbox" id="langToggle" onchange="switchLanguage(this.checked)">
-        <span class="slider"></span>
-      </label>
+     Language Switcher 
+    <div class="language-switcher">
+        <button class="lang-btn active" data-lang="es">ES</button>
+        <button class="lang-btn" data-lang="en">EN</button>
     </div>
-    <nav>
-      <ul>
-        <li><a href="#about"><span class="lang-es">Sobre Mí</span><span class="lang-en">About Me</span></a></li>
-        <li><a href="#projects"><span class="lang-es">Proyectos</span><span class="lang-en">Projects</span></a></li>
-        <li><a href="#skills"><span class="lang-es">Habilidades</span><span class="lang-en">Skills</span></a></li>
-        <li><a href="#contact"><span class="lang-es">Contacto</span><span class="lang-en">Contact</span></a></li>
-      </ul>
-    </nav>
-  </header>
 
-  <section id="about">
-    <h2><span class="lang-es">Sobre Mí</span><span class="lang-en">About Me</span></h2>
-    <p class="lang-es">Soy ingeniero electrónico, apasionado por la optimización de procesos, IoT, domótica y seguridad informática, con experiencia en el desarrollo y gestión de mejoras en sistemas. Me integro rápidamente en equipos interdisciplinarios para identificar la causa raíz de problemas y desarrollar soluciones eficientes con los recursos disponibles.
+     Sidebar Navigation 
+    <aside class="sidebar">
+        <div class="sidebar-content">
+            <div class="profile">
+                <div class="profile-image">
+                    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="50" cy="50" r="48" stroke="currentColor" stroke-width="2"/>
+                        <path d="M50 30C41.7157 30 35 36.7157 35 45C35 53.2843 41.7157 60 50 60C58.2843 60 65 53.2843 65 45C65 36.7157 58.2843 30 50 30Z" fill="currentColor"/>
+                        <path d="M30 75C30 65.0589 38.0589 57 48 57H52C61.9411 57 70 65.0589 70 75V80H30V75Z" fill="currentColor"/>
+                    </svg>
+                </div>
+                <h1 class="name" data-i18n="name">Tu Nombre</h1>
+                <p class="title" data-i18n="title">Ingeniero Electrónico</p>
+                <p class="subtitle" data-i18n="subtitle">Ciberseguridad & IoT</p>
+            </div>
 
-    Cuento con habilidades en administración de sistemas, redes y control de procesos, con un enfoque práctico que me permite priorizar tareas para lograr objetivos de manera rápida y eficiente. Me motiva el aprendizaje continuo y la adquisición de nuevas herramientas para potenciar mi crecimiento profesional y académico.</p>
-</p>
-    <p class="lang-en">I am an electronic engineer, passionate about process optimization, IoT, home automation and cybersecurity. ❤️ ..</p>
-  </section>
+            <nav class="nav">
+                <a href="#about" class="nav-link active" data-i18n="nav-about">Sobre Mí</a>
+                <a href="#skills" class="nav-link" data-i18n="nav-skills">Habilidades</a>
+                <a href="#experience" class="nav-link" data-i18n="nav-experience">Experiencia</a>
+                <a href="#projects" class="nav-link" data-i18n="nav-projects">Proyectos</a>
+                <a href="#contact" class="nav-link" data-i18n="nav-contact">Contacto</a>
+            </nav>
 
-  <section id="projects">
-    <h2><span class="lang-es">Proyectos</span><span class="lang-en">Projects</span></h2>
-    <p class="lang-es">Descripción de proyectos...</p>
-    <p class="lang-en">Project descriptions...</p>
-  </section>
+            <div class="social-links">
+                <a href="#" aria-label="GitHub" class="social-link">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                </a>
+                <a href="#" aria-label="LinkedIn" class="social-link">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
+                </a>
+                <a href="#" aria-label="Email" class="social-link">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                        <polyline points="22,6 12,13 2,6"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </aside>
 
-  <section id="skills">
-    <h2><span class="lang-es">Habilidades</span><span class="lang-en">Skills</span></h2>
-    <p class="lang-es">Lista de habilidades...</p>
-    <p class="lang-en">List of skills...</p>
-  </section>
+     Main Content 
+    <main class="main-content">
+         About Section 
+        <section id="about" class="section">
+            <div class="section-header">
+                <span class="section-number">01.</span>
+                <h2 class="section-title" data-i18n="about-title">Sobre Mí</h2>
+            </div>
+            <div class="about-content">
+                <p class="lead" data-i18n="about-lead">
+                    Soy un ingeniero electrónico apasionado por la intersección entre hardware, software y seguridad digital.
+                </p>
+                <p data-i18n="about-p1">
+                    Mi experiencia abarca desde el diseño de circuitos electrónicos hasta la implementación de sistemas IoT seguros. Me especializo en crear soluciones que no solo funcionan, sino que están protegidas contra las amenazas cibernéticas modernas.
+                </p>
+                <p data-i18n="about-p2">
+                    Con un enfoque en la ciberseguridad aplicada a dispositivos IoT, trabajo constantemente en proyectos que combinan electrónica de vanguardia con protocolos de seguridad robustos. Mi objetivo es construir el futuro conectado de manera segura y eficiente.
+                </p>
+                
+                <div class="interests">
+                    <div class="interest-card">
+                        <div class="interest-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="2" width="20" height="8" rx="2" ry="2"/>
+                                <rect x="2" y="14" width="20" height="8" rx="2" ry="2"/>
+                                <line x1="6" y1="6" x2="6.01" y2="6"/>
+                                <line x1="6" y1="18" x2="6.01" y2="18"/>
+                            </svg>
+                        </div>
+                        <h3 data-i18n="interest-electronics">Electrónica</h3>
+                        <p data-i18n="interest-electronics-desc">Diseño de circuitos y sistemas embebidos</p>
+                    </div>
+                    
+                    <div class="interest-card">
+                        <div class="interest-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            </svg>
+                        </div>
+                        <h3 data-i18n="interest-security">Ciberseguridad</h3>
+                        <p data-i18n="interest-security-desc">Protección de sistemas y redes</p>
+                    </div>
+                    
+                    <div class="interest-card">
+                        <div class="interest-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="2"/>
+                                <path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.82a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14"/>
+                            </svg>
+                        </div>
+                        <h3 data-i18n="interest-iot">IoT</h3>
+                        <p data-i18n="interest-iot-desc">Internet de las Cosas y conectividad</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <section id="contact">
-    <h2><span class="lang-es">Contacto</span><span class="lang-en">Contact</span></h2>
-    <p class="lang-es">Formulario de contacto...</p>
-    <p class="lang-en">Contact form...</p>
-  </section>
+         Skills Section 
+        <section id="skills" class="section">
+            <div class="section-header">
+                <span class="section-number">02.</span>
+                <h2 class="section-title" data-i18n="skills-title">Habilidades Técnicas</h2>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3 data-i18n="skills-electronics-title">Electrónica & Hardware</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">PCB Design</span>
+                        <span class="skill-tag">Arduino</span>
+                        <span class="skill-tag">Raspberry Pi</span>
+                        <span class="skill-tag">ESP32/ESP8266</span>
+                        <span class="skill-tag">Microcontroladores</span>
+                        <span class="skill-tag">Sensores</span>
+                        <span class="skill-tag">FPGA</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3 data-i18n="skills-security-title">Ciberseguridad</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Penetration Testing</span>
+                        <span class="skill-tag">Network Security</span>
+                        <span class="skill-tag">Cryptography</span>
+                        <span class="skill-tag">Vulnerability Assessment</span>
+                        <span class="skill-tag">Wireshark</span>
+                        <span class="skill-tag">Metasploit</span>
+                        <span class="skill-tag">Kali Linux</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3 data-i18n="skills-iot-title">IoT & Conectividad</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">MQTT</span>
+                        <span class="skill-tag">LoRaWAN</span>
+                        <span class="skill-tag">Zigbee</span>
+                        <span class="skill-tag">Bluetooth LE</span>
+                        <span class="skill-tag">WiFi</span>
+                        <span class="skill-tag">Node-RED</span>
+                        <span class="skill-tag">Home Assistant</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3 data-i18n="skills-programming-title">Programación</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">C/C++</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">Bash</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">Linux</span>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <footer>
-    <p>&copy; 2025 Lucas Della Santina</p>
-  </footer>
-  <a href="state.html">🔍 Ver estado del servicio</a>
+         Experience Section 
+        <section id="experience" class="section">
+            <div class="section-header">
+                <span class="section-number">03.</span>
+                <h2 class="section-title" data-i18n="experience-title">Experiencia</h2>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2023 — <span data-i18n="present">Presente</span></div>
+                    <div class="timeline-content">
+                        <h3 data-i18n="exp1-title">Ingeniero de Seguridad IoT</h3>
+                        <p class="company" data-i18n="exp1-company">Empresa Tecnológica</p>
+                        <p data-i18n="exp1-desc">
+                            Desarrollo e implementación de soluciones de seguridad para dispositivos IoT. Auditorías de seguridad, análisis de vulnerabilidades y diseño de arquitecturas seguras para sistemas conectados.
+                        </p>
+                        <div class="skill-tags">
+                            <span class="skill-tag">IoT Security</span>
+                            <span class="skill-tag">Penetration Testing</span>
+                            <span class="skill-tag">MQTT</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">2021 — 2023</div>
+                    <div class="timeline-content">
+                        <h3 data-i18n="exp2-title">Ingeniero Electrónico</h3>
+                        <p class="company" data-i18n="exp2-company">Startup de IoT</p>
+                        <p data-i18n="exp2-desc">
+                            Diseño y desarrollo de dispositivos IoT desde el concepto hasta la producción. Implementación de protocolos de comunicación y optimización de consumo energético.
+                        </p>
+                        <div class="skill-tags">
+                            <span class="skill-tag">ESP32</span>
+                            <span class="skill-tag">PCB Design</span>
+                            <span class="skill-tag">LoRaWAN</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">2019 — 2021</div>
+                    <div class="timeline-content">
+                        <h3 data-i18n="exp3-title">Desarrollador de Sistemas Embebidos</h3>
+                        <p class="company" data-i18n="exp3-company">Empresa de Automatización</p>
+                        <p data-i18n="exp3-desc">
+                            Programación de microcontroladores y desarrollo de firmware para sistemas de automatización industrial. Integración de sensores y actuadores.
+                        </p>
+                        <div class="skill-tags">
+                            <span class="skill-tag">C/C++</span>
+                            <span class="skill-tag">Arduino</span>
+                            <span class="skill-tag">Modbus</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-  <script>
-    particlesJS("particles", {
-      "particles": {
-        "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
-        "color": { "value": ["#00bfff", "#1e90ff", "#87cefa"] },
-        "shape": { "type": "circle" },
-        "opacity": { "value": 0.5 },
-        "size": { "value": 3 },
-        "line_linked": {
-          "enable": true,
-          "distance": 150,
-          "color": "#1e90ff",
-          "opacity": 0.4,
-          "width": 1
-        },
-        "move": { "enable": true, "speed": 2 }
-      },
-      "interactivity": {
-        "detect_on": "canvas",
-        "events": {
-          "onhover": { "enable": true, "mode": "repulse" },
-          "onclick": { "enable": true, "mode": "push" }
-        },
-        "modes": {
-          "repulse": { "distance": 100 },
-          "push": { "particles_nb": 4 }
-        }
-      },
-      "retina_detect": true
-    });
+         Projects Section 
+        <section id="projects" class="section">
+            <div class="section-header">
+                <span class="section-number">04.</span>
+                <h2 class="section-title" data-i18n="projects-title">Proyectos Destacados</h2>
+            </div>
+            <div class="projects-grid">
+                <article class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            </svg>
+                        </div>
+                        <a href="#" class="project-link" aria-label="Ver proyecto">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                <polyline points="15 3 21 3 21 9"/>
+                                <line x1="10" y1="14" x2="21" y2="3"/>
+                            </svg>
+                        </a>
+                    </div>
+                    <h3 data-i18n="project1-title">Sistema de Seguridad IoT</h3>
+                    <p data-i18n="project1-desc">
+                        Plataforma completa de seguridad para dispositivos IoT con detección de intrusiones, análisis de tráfico en tiempo real y alertas automáticas.
+                    </p>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">MQTT</span>
+                        <span class="skill-tag">Machine Learning</span>
+                    </div>
+                </article>
+                
+                <article class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="2"/>
+                                <path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.82a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14"/>
+                            </svg>
+                        </div>
+                        <a href="#" class="project-link" aria-label="Ver proyecto">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                <polyline points="15 3 21 3 21 9"/>
+                                <line x1="10" y1="14" x2="21" y2="3"/>
+                            </svg>
+                        </a>
+                    </div>
+                    <h3 data-i18n="project2-title">Red de Sensores Ambientales</h3>
+                    <p data-i18n="project2-desc">
+                        Red distribuida de sensores IoT para monitoreo ambiental con comunicación LoRaWAN y visualización de datos en tiempo real.
+                    </p>
+                    <div class="skill-tags">
+                        <span class="skill-tag">ESP32</span>
+                        <span class="skill-tag">LoRaWAN</span>
+                        <span class="skill-tag">Node-RED</span>
+                    </div>
+                </article>
+                
+                <article class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="2" width="20" height="8" rx="2" ry="2"/>
+                                <rect x="2" y="14" width="20" height="8" rx="2" ry="2"/>
+                                <line x1="6" y1="6" x2="6.01" y2="6"/>
+                                <line x1="6" y1="18" x2="6.01" y2="18"/>
+                            </svg>
+                        </div>
+                        <a href="#" class="project-link" aria-label="Ver proyecto">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                <polyline points="15 3 21 3 21 9"/>
+                                <line x1="10" y1="14" x2="21" y2="3"/>
+                            </svg>
+                        </a>
+                    </div>
+                    <h3 data-i18n="project3-title">Herramienta de Pentesting IoT</h3>
+                    <p data-i18n="project3-desc">
+                        Suite de herramientas para análisis de seguridad y pentesting específico para dispositivos IoT y protocolos de comunicación.
+                    </p>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Wireshark</span>
+                        <span class="skill-tag">Scapy</span>
+                    </div>
+                </article>
+                
+                <article class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                                <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                                <line x1="12" y1="22.08" x2="12" y2="12"/>
+                            </svg>
+                        </div>
+                        <a href="#" class="project-link" aria-label="Ver proyecto">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                <polyline points="15 3 21 3 21 9"/>
+                                <line x1="10" y1="14" x2="21" y2="3"/>
+                            </svg>
+                        </a>
+                    </div>
+                    <h3 data-i18n="project4-title">Gateway IoT Seguro</h3>
+                    <p data-i18n="project4-desc">
+                        Gateway personalizado con cifrado end-to-end para comunicación segura entre dispositivos IoT y la nube.
+                    </p>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Raspberry Pi</span>
+                        <span class="skill-tag">TLS/SSL</span>
+                        <span class="skill-tag">Docker</span>
+                    </div>
+                </article>
+            </div>
+        </section>
 
-    function switchLanguage(isEnglish) {
-      document.querySelectorAll('.lang-es').forEach(el => el.style.display = isEnglish ? 'none' : 'inline');
-      document.querySelectorAll('.lang-en').forEach(el => el.style.display = isEnglish ? 'inline' : 'none');
-    }
-  </script>
+         Contact Section 
+        <section id="contact" class="section">
+            <div class="section-header">
+                <span class="section-number">05.</span>
+                <h2 class="section-title" data-i18n="contact-title">Contacto</h2>
+            </div>
+            <div class="contact-content">
+                <p class="contact-text" data-i18n="contact-text">
+                    ¿Tienes un proyecto interesante en mente? ¿Necesitas consultoría en ciberseguridad o IoT? Me encantaría escuchar sobre tu idea y ver cómo puedo ayudarte.
+                </p>
+                <a href="mailto:tu@email.com" class="contact-button" data-i18n="contact-button">
+                    Enviar Mensaje
+                </a>
+                
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                        <span>tu@email.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                        <span data-i18n="location">Tu Ciudad, País</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p data-i18n="footer-text">Diseñado y construido con pasión por la tecnología</p>
+            <p class="footer-year">© 2025</p>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
 </body>
-
-
-
-<!--     SelfXSS  -->
-    <script>
-    setTimeout(() => {
-        console.log('%c¡Detente!', 'color: red; font-size: 40px; font-weight: bold;');
-        console.log(
-        '%cEsta función del navegador está pensada para desarrolladores.\n' +
-        'Si alguien te indicó que copiaras y pegaras algo aquí para habilitar una función, se trata de un fraude.\n\n' +
-        'Si lo haces, esta persona podrá acceder a tu cuenta.\n\n' +
-        'Obten mas informacion buscando a serca de SelfXSS ','font-size: 16px;'
-        );
-    }, 0);
-    </script>
-<!-- 
-    <script src="assets/storageHandler.js"></script>
--->
-
 </html>
