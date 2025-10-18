@@ -1,7 +1,7 @@
-// Translations
+// Translations object
 const translations = {
   es: {
-    name: "Tu Nombre",
+    name: "Lucas della Santina",
     title: "Ingeniero Electrónico",
     subtitle: "Ciberseguridad & IoT",
     "nav-about": "Sobre Mí",
@@ -58,11 +58,13 @@ const translations = {
     "contact-text":
       "¿Tienes un proyecto interesante en mente? ¿Necesitas consultoría en ciberseguridad o IoT? Me encantaría escuchar sobre tu idea y ver cómo puedo ayudarte.",
     "contact-button": "Enviar Mensaje",
+    "contact-github": "Ver en GitHub",
+    "contact-linkedin": "Conectar en LinkedIn",
     location: "Tu Ciudad, País",
     "footer-text": "Diseñado y construido con pasión por la tecnología",
   },
   en: {
-    name: "Your Name",
+    name: "Lucas della Santina",
     title: "Electronic Engineer",
     subtitle: "Cybersecurity & IoT",
     "nav-about": "About",
@@ -119,15 +121,25 @@ const translations = {
     "contact-text":
       "Do you have an interesting project in mind? Need cybersecurity or IoT consulting? I would love to hear about your idea and see how I can help you.",
     "contact-button": "Send Message",
+    "contact-github": "View on GitHub",
+    "contact-linkedin": "Connect on LinkedIn",
     location: "Your City, Country",
     "footer-text": "Designed and built with passion for technology",
   },
 }
 
-// Language switcher
 let currentLang = "es"
 
+/**
+ * Changes the application language
+ * @param {string} lang - Language code (es or en)
+ */
 function changeLanguage(lang) {
+  if (!translations[lang]) {
+    console.error(`[v0] Language '${lang}' not found`)
+    return
+  }
+
   currentLang = lang
   document.documentElement.lang = lang
 
@@ -136,110 +148,218 @@ function changeLanguage(lang) {
     const key = element.getAttribute("data-i18n")
     if (translations[lang][key]) {
       element.textContent = translations[lang][key]
+    } else {
+      console.warn(`[v0] Translation key '${key}' not found for language '${lang}'`)
     }
   })
 
   // Update active button
   document.querySelectorAll(".lang-btn").forEach((btn) => {
-    btn.classList.remove("active")
-    if (btn.getAttribute("data-lang") === lang) {
-      btn.classList.add("active")
-    }
+    const isActive = btn.getAttribute("data-lang") === lang
+    btn.classList.toggle("active", isActive)
+    btn.setAttribute("aria-pressed", isActive)
   })
 
   // Save preference
-  localStorage.setItem("preferredLanguage", lang)
+  try {
+    localStorage.setItem("preferredLanguage", lang)
+  } catch (error) {
+    console.warn("[v0] localStorage not available:", error)
+  }
 }
 
-// Language button event listeners
-document.querySelectorAll(".lang-btn").forEach((btn) => {
-  btn.addEventListener("click", () => {
-    const lang = btn.getAttribute("data-lang")
-    changeLanguage(lang)
+document.addEventListener("DOMContentLoaded", () => {
+  // Language button event listeners
+  document.querySelectorAll(".lang-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const lang = btn.getAttribute("data-lang")
+      changeLanguage(lang)
+    })
   })
+
+  // Load saved language preference
+  try {
+    const savedLang = localStorage.getItem("preferredLanguage")
+    if (savedLang && translations[savedLang]) {
+      changeLanguage(savedLang)
+    }
+  } catch (error) {
+    console.warn("[v0] Could not load language preference:", error)
+  }
+
+  // Smooth scrolling for navigation links
+  document.querySelectorAll(".nav-link").forEach((link) => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault()
+      const targetId = link.getAttribute("href")
+      const targetSection = document.querySelector(targetId)
+
+      if (targetSection) {
+        targetSection.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        })
+
+        // Update active nav link
+        document.querySelectorAll(".nav-link").forEach((l) => l.classList.remove("active"))
+        link.classList.add("active")
+      } else {
+        console.warn(`[v0] Target section '${targetId}' not found`)
+      }
+    })
+  })
+
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: "0px 0px -100px 0px",
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = "1"
+        entry.target.style.transform = "translateY(0)"
+      }
+    })
+  }, observerOptions)
+
+  // Observe all sections
+  document.querySelectorAll(".section").forEach((section) => {
+    observer.observe(section)
+  })
+
+  const sections = document.querySelectorAll(".section")
+  const navLinks = document.querySelectorAll(".nav-link")
+  let scrollTimeout
+
+  function updateActiveNavLink() {
+    let current = ""
+
+    sections.forEach((section) => {
+      const sectionTop = section.offsetTop
+      const sectionHeight = section.clientHeight
+      if (window.pageYOffset >= sectionTop - 200) {
+        current = section.getAttribute("id")
+      }
+    })
+
+    navLinks.forEach((link) => {
+      link.classList.remove("active")
+      if (link.getAttribute("href") === `#${current}`) {
+        link.classList.add("active")
+      }
+    })
+  }
+
+  window.addEventListener("scroll", () => {
+    clearTimeout(scrollTimeout)
+    scrollTimeout = setTimeout(updateActiveNavLink, 50)
+  })
+
+  // Project cards now use CSS hover states for better performance
+
+  // Initialize particles
+  new ParticlesBackground("particles-canvas")
 })
 
-// Load saved language preference
-const savedLang = localStorage.getItem("preferredLanguage")
-if (savedLang) {
-  changeLanguage(savedLang)
-}
+class ParticlesBackground {
+  constructor(canvasId) {
+    this.canvas = document.getElementById(canvasId)
+    if (!this.canvas) return
 
-// Smooth scrolling for navigation links
-document.querySelectorAll(".nav-link").forEach((link) => {
-  link.addEventListener("click", (e) => {
-    e.preventDefault()
-    const targetId = link.getAttribute("href")
-    const targetSection = document.querySelector(targetId)
+    this.ctx = this.canvas.getContext("2d")
+    this.particles = []
+    this.particleCount = 50
+    this.connectionDistance = 150
 
-    if (targetSection) {
-      targetSection.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
+    this.resize()
+    this.init()
+    this.animate()
+
+    window.addEventListener("resize", () => this.resize())
+  }
+
+  resize() {
+    this.canvas.width = window.innerWidth
+    this.canvas.height = window.innerHeight
+  }
+
+  init() {
+    this.particles = []
+    for (let i = 0; i < this.particleCount; i++) {
+      this.particles.push({
+        x: Math.random() * this.canvas.width,
+        y: Math.random() * this.canvas.height,
+        vx: (Math.random() - 0.5) * 0.5,
+        vy: (Math.random() - 0.5) * 0.5,
+        radius: Math.random() * 1.5 + 0.5,
+        opacity: Math.random() * 0.5 + 0.3,
       })
-
-      // Update active nav link
-      document.querySelectorAll(".nav-link").forEach((l) => l.classList.remove("active"))
-      link.classList.add("active")
     }
-  })
-})
+  }
 
-// Intersection Observer for scroll animations
-const observerOptions = {
-  threshold: 0.1,
-  rootMargin: "0px 0px -100px 0px",
+  update() {
+    this.particles.forEach((particle) => {
+      particle.x += particle.vx
+      particle.y += particle.vy
+
+      // Wrap around edges
+      if (particle.x < 0) particle.x = this.canvas.width
+      if (particle.x > this.canvas.width) particle.x = 0
+      if (particle.y < 0) particle.y = this.canvas.height
+      if (particle.y > this.canvas.height) particle.y = 0
+    })
+  }
+
+  draw() {
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
+
+    // Draw particles
+    this.particles.forEach((particle) => {
+      this.ctx.fillStyle = `rgba(0, 217, 255, ${particle.opacity})`
+      this.ctx.beginPath()
+      this.ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2)
+      this.ctx.fill()
+    })
+
+    // Draw connections
+    for (let i = 0; i < this.particles.length; i++) {
+      for (let j = i + 1; j < this.particles.length; j++) {
+        const dx = this.particles[i].x - this.particles[j].x
+        const dy = this.particles[i].y - this.particles[j].y
+        const distance = Math.sqrt(dx * dx + dy * dy)
+
+        if (distance < this.connectionDistance) {
+          const opacity = (1 - distance / this.connectionDistance) * 0.3
+          this.ctx.strokeStyle = `rgba(0, 255, 136, ${opacity})`
+          this.ctx.lineWidth = 1
+          this.ctx.beginPath()
+          this.ctx.moveTo(this.particles[i].x, this.particles[i].y)
+          this.ctx.lineTo(this.particles[j].x, this.particles[j].y)
+          this.ctx.stroke()
+        }
+      }
+    }
+  }
+
+  animate() {
+    this.update()
+    this.draw()
+    requestAnimationFrame(() => this.animate())
+  }
 }
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.style.opacity = "1"
-      entry.target.style.transform = "translateY(0)"
-    }
-  })
-}, observerOptions)
+setTimeout(() => {
+  console.log("%c¡Detente!", "color: red; font-size: 40px; font-weight: bold;")
+  console.log(
+    "%cEsta función del navegador está pensada para desarrolladores.\n" +
+      "Si alguien te indicó que copiaras y pegaras algo aquí para habilitar una función, se trata de un fraude.\n\n" +
+      "Si lo haces, esta persona podrá acceder a tu cuenta.\n\n" +
+      "Obtén más información buscando acerca de SelfXSS",
+    "font-size: 16px; color: #ff6b6b;",
+  )
+}, 0)
 
-// Observe all sections
-document.querySelectorAll(".section").forEach((section) => {
-  observer.observe(section)
-})
-
-// Update active nav link on scroll
-const sections = document.querySelectorAll(".section")
-const navLinks = document.querySelectorAll(".nav-link")
-
-window.addEventListener("scroll", () => {
-  let current = ""
-
-  sections.forEach((section) => {
-    const sectionTop = section.offsetTop
-    const sectionHeight = section.clientHeight
-    if (window.pageYOffset >= sectionTop - 200) {
-      current = section.getAttribute("id")
-    }
-  })
-
-  navLinks.forEach((link) => {
-    link.classList.remove("active")
-    if (link.getAttribute("href") === `#${current}`) {
-      link.classList.add("active")
-    }
-  })
-})
-
-// Add hover effect to project cards
-document.querySelectorAll(".project-card").forEach((card) => {
-  card.addEventListener("mouseenter", function () {
-    this.style.transform = "translateY(-8px)"
-  })
-
-  card.addEventListener("mouseleave", function () {
-    this.style.transform = "translateY(0)"
-  })
-})
-
-// Console message for developers
 console.log("%c¡Hola Developer! 👋", "color: #00d9ff; font-size: 20px; font-weight: bold;")
 console.log(
   "%cSi estás viendo esto, probablemente te guste la tecnología tanto como a mí.",
