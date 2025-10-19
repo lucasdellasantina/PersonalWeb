@@ -324,91 +324,7 @@ document.addEventListener("DOMContentLoaded", () => {
     scrollTimeout = setTimeout(updateActiveNavLink, 50)
   })
 
-  // Initialize particles
-  new ParticlesBackground("particles-canvas")
 
-  const clarity = (globalScope, doc, apiName, scriptTag, trackingId) => {
-    // Initialize clarity array if not exists
-    if (!globalScope[apiName]) {
-      globalScope[apiName] = (...args) => {
-        const queue = globalScope[apiName].q || []
-        queue.push(args)
-        globalScope[apiName].q = queue
-      }
-    }
-  }
-
-  clarity(globalThis, document, "clarity", "script", "rz1pnv8gvy")
-
-  // Device Fingerprinting  DDOS protection
-
-  /**
- * Event listener for 'fetch' events. This triggers on every request to the worker.
- */
-addEventListener('fetch', event => {
-  event.respondWith(handleRequest(event.request))
-})
-
-/**
- * Main handler for incoming requests.
- * @param {Request} request - The incoming request object from the fetch event.
- * @returns {Response} A response object with JA4 Signals in JSON format.
- */
-async function handleRequest(request) {
-  // Safely access the ja4Signals object using optional chaining, which prevents errors if properties are undefined.
-  const ja4Signals = request.cf?.botManagement?.ja4Signals || {};
-
-  // Construct the response content, including both the original ja4Signals and the parsed signals.
-  const responseContent = {
-    ja4Signals: ja4Signals,
-    jaSignalsParsed: parseJA4Signals(ja4Signals)
-  };
-
-  // Return a JSON response with appropriate headers.
-  return new Response(JSON.stringify(responseContent), {
-    status: 200,
-    headers: {
-      "content-type": "application/json;charset=UTF-8"
-    }
-  })
-}
-
-/**
- * Parses the JA4 Signals into categorized groups based on their names.
- * @param {Object} ja4Signals - The JA4 Signals object that may contain various metrics.
- * @returns {Object} An object with categorized JA4 Signals: ratios, ranks, and quantiles.
- */
-function parseJA4Signals(ja4Signals) {
-  // Define the keys for each category of signals.
-  const ratios = ['h2h3_ratio_1h', 'heuristic_ratio_1h', 'browser_ratio_1h', 'cache_ratio_1h'];
-  const ranks = ['uas_rank_1h', 'paths_rank_1h', 'reqs_rank_1h', 'ips_rank_1h'];
-  const quantiles = ['reqs_quantile_1h', 'ips_quantile_1h'];
-
-  // Return an object with each category containing only the signals that are present.
-  return {
-    ratios: filterKeys(ja4Signals, ratios),
-    ranks: filterKeys(ja4Signals, ranks),
-    quantiles: filterKeys(ja4Signals, quantiles)
-  };
-}
-
-/**
- * Filters the keys in the ja4Signals object that match the list of specified keys and are not undefined.
- * @param {Object} ja4Signals - The JA4 Signals object.
- * @param {Array<string>} keys - An array of keys to filter from the ja4Signals object.
- * @returns {Object} A filtered object containing only the specified keys that are present in ja4Signals.
- */
-function filterKeys(ja4Signals, keys) {
-  const filtered = {};
-  // Iterate over the specified keys and add them to the filtered object if they exist in ja4Signals.
-  keys.forEach(key => {
-    // Check if the key exists and is not undefined to handle optional presence of each signal.
-    if (ja4Signals && ja4Signals[key] !== undefined) {
-      filtered[key] = ja4Signals[key];
-    }
-  });
-  return filtered;
-}
 
 /**
  * Improved ParticlesBackground with secure random number generation
@@ -538,4 +454,5 @@ setTimeout(() => {
   console.log("%c    console.log('❌ ¡FUERA DE AQUÍ!');", "color: #E06C75; font-size: 14px; font-family: monospace;"); 
   console.log("%c}", "color: #C678DD; font-size: 14px; font-family: monospace;");
 }, 0)
+
 })
