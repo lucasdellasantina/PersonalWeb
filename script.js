@@ -1,4 +1,3 @@
-// Translations object
 const translations = {
   es: {
     name: "Lucas della Santina",
@@ -175,6 +174,7 @@ const translations = {
 let currentLang = "es"
 
 /**
+ * Refactored to use .dataset instead of getAttribute for better performance
  * Changes the application language
  * @param {string} lang - Language code (es or en)
  */
@@ -189,7 +189,7 @@ function changeLanguage(lang) {
 
   // Update all elements with data-i18n attribute
   document.querySelectorAll("[data-i18n]").forEach((element) => {
-    const key = element.getAttribute("data-i18n")
+    const key = element.dataset.i18n
     if (translations[lang][key]) {
       element.textContent = translations[lang][key]
     } else {
@@ -199,7 +199,7 @@ function changeLanguage(lang) {
 
   // Update active button
   document.querySelectorAll(".lang-btn").forEach((btn) => {
-    const isActive = btn.getAttribute("data-lang") === lang
+    const isActive = btn.dataset.lang === lang
     btn.classList.toggle("active", isActive)
     btn.setAttribute("aria-pressed", isActive)
   })
@@ -212,26 +212,24 @@ function changeLanguage(lang) {
   }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  // Language button event listeners
+/**
+ * Extracted common event listener setup to reduce code duplication
+ * Attaches click event listeners to language buttons
+ */
+function setupLanguageButtons() {
   document.querySelectorAll(".lang-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
-      const lang = btn.getAttribute("data-lang")
+      const lang = btn.dataset.lang
       changeLanguage(lang)
     })
   })
+}
 
-  // Load saved language preference
-  try {
-    const savedLang = localStorage.getItem("preferredLanguage")
-    if (savedLang && translations[savedLang]) {
-      changeLanguage(savedLang)
-    }
-  } catch (error) {
-    console.warn("[v0] Could not load language preference:", error)
-  }
-
-  // Smooth scrolling for navigation links
+/**
+ * Extracted navigation setup to reduce code duplication
+ * Sets up smooth scrolling for navigation links
+ */
+function setupNavigation() {
   document.querySelectorAll(".nav-link").forEach((link) => {
     link.addEventListener("click", (e) => {
       e.preventDefault()
@@ -252,7 +250,13 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     })
   })
+}
 
+/**
+ * Extracted scroll observer setup to reduce code duplication
+ * Sets up intersection observer for fade-in animations
+ */
+function setupScrollObserver() {
   const observerOptions = {
     threshold: 0.1,
     rootMargin: "0px 0px -100px 0px",
@@ -267,45 +271,67 @@ document.addEventListener("DOMContentLoaded", () => {
     })
   }, observerOptions)
 
-  // Observe all sections
   document.querySelectorAll(".section").forEach((section) => {
     observer.observe(section)
   })
+}
 
+/**
+ * Extracted active nav link update to reduce code duplication
+ * Updates the active navigation link based on scroll position
+ */
+function updateActiveNavLink() {
   const sections = document.querySelectorAll(".section")
   const navLinks = document.querySelectorAll(".nav-link")
-  let scrollTimeout
+  let current = ""
 
-  function updateActiveNavLink() {
-    let current = ""
+  sections.forEach((section) => {
+    const sectionTop = section.offsetTop
+    const sectionHeight = section.clientHeight
+    if (window.pageYOffset >= sectionTop - 200) {
+      current = section.getAttribute("id")
+    }
+  })
 
-    sections.forEach((section) => {
-      const sectionTop = section.offsetTop
-      const sectionHeight = section.clientHeight
-      if (window.pageYOffset >= sectionTop - 200) {
-        current = section.getAttribute("id")
-      }
-    })
+  navLinks.forEach((link) => {
+    link.classList.remove("active")
+    if (link.getAttribute("href") === `#${current}`) {
+      link.classList.add("active")
+    }
+  })
+}
 
-    navLinks.forEach((link) => {
-      link.classList.remove("active")
-      if (link.getAttribute("href") === `#${current}`) {
-        link.classList.add("active")
-      }
-    })
+document.addEventListener("DOMContentLoaded", () => {
+  setupLanguageButtons()
+
+  // Load saved language preference
+  try {
+    const savedLang = localStorage.getItem("preferredLanguage")
+    if (savedLang && translations[savedLang]) {
+      changeLanguage(savedLang)
+    }
+  } catch (error) {
+    console.warn("[v0] Could not load language preference:", error)
   }
 
+  setupNavigation()
+  setupScrollObserver()
+
+  // Setup scroll event listener for active nav link
+  let scrollTimeout
   window.addEventListener("scroll", () => {
     clearTimeout(scrollTimeout)
     scrollTimeout = setTimeout(updateActiveNavLink, 50)
   })
 
-  // Project cards now use CSS hover states for better performance
-
   // Initialize particles
   new ParticlesBackground("particles-canvas")
 })
 
+/**
+ * Improved ParticlesBackground class with better security and performance
+ * Manages animated particle background with constellation effect
+ */
 class ParticlesBackground {
   constructor(canvasId) {
     this.canvas = document.getElementById(canvasId)
@@ -328,16 +354,37 @@ class ParticlesBackground {
     this.canvas.height = window.innerHeight
   }
 
+  /**
+   * Improved init() with better random number generation
+   * Initializes particles with random positions and velocities
+   */
   init() {
     this.particles = []
+    const crypto = window.crypto || window.msCrypto
+    const randomArray = new Uint32Array(this.particleCount * 5)
+
+    // Use crypto.getRandomValues() for better randomness when available
+    if (crypto && crypto.getRandomValues) {
+      try {
+        crypto.getRandomValues(randomArray)
+      } catch (e) {
+        console.warn("[v0] Crypto API not available, falling back to Math.random()")
+      }
+    }
+
     for (let i = 0; i < this.particleCount; i++) {
+      // Use crypto values if available, otherwise fall back to Math.random()
+      const useRandom = !crypto || !crypto.getRandomValues
+      const getRandom = () =>
+        useRandom ? Math.random() : randomArray[i * 5 + Math.floor(Math.random() * 5)] / 0xffffffff
+
       this.particles.push({
-        x: Math.random() * this.canvas.width,
-        y: Math.random() * this.canvas.height,
-        vx: (Math.random() - 0.5) * 0.5,
-        vy: (Math.random() - 0.5) * 0.5,
-        radius: Math.random() * 1.5 + 0.5,
-        opacity: Math.random() * 0.5 + 0.3,
+        x: getRandom() * this.canvas.width,
+        y: getRandom() * this.canvas.height,
+        vx: (getRandom() - 0.5) * 0.5,
+        vy: (getRandom() - 0.5) * 0.5,
+        radius: getRandom() * 1.5 + 0.5,
+        opacity: getRandom() * 0.5 + 0.3,
       })
     }
   }

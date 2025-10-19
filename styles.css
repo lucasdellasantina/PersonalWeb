@@ -664,12 +664,45 @@ body {
     grid-template-columns: 1fr;
   }
 
+  /* Improved timeline for mobile - smaller circles and adjusted spacing */
   .timeline {
     padding-left: 1.5rem;
   }
 
+  .timeline::before {
+    left: -0.25rem;
+    width: 1.5px;
+  }
+
   .timeline-item {
     padding-left: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .timeline-item::before {
+    left: -1.75rem;
+    top: 0.25rem;
+    width: 10px;
+    height: 10px;
+    border: 2px solid var(--bg-primary);
+    box-shadow: 0 0 0 2px var(--border-color);
+  }
+
+  .timeline-date {
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .timeline-content h3 {
+    font-size: 1.1rem;
+  }
+
+  .company {
+    font-size: 0.95rem;
+  }
+
+  .timeline-content p {
+    font-size: 0.95rem;
   }
 
   .certifications-grid {
