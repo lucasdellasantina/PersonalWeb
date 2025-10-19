@@ -468,16 +468,20 @@ class ParticlesBackground {
   }
 }
 
-console.log("%c¡Detente!", "color: red; font-size: 40px; font-weight: bold;")
-console.log("%cEsta función del navegador está pensada para desarrolladores.\n" +
+setTimeout(() => {
+  console.log("%c¡Detente!", "color: red; font-size: 40px; font-weight: bold;")
+  console.log(
+    "%cEsta función del navegador está pensada para desarrolladores.\n" +
       "Si alguien te indicó que copiaras y pegaras algo aquí para habilitar una función, se trata de un fraude.\n\n" +
       "Si lo haces, esta persona podrá acceder a tu cuenta.\n\n" +
       "Obtén más información buscando acerca de SelfXSS",
-      "font-size: 16px; color: #ff6b6b;",)
-console.log(
-  "%c if You ==  Developer \n" +
-  "   return  Contactame 🚀😉 \n" +
-  " else: \n" +
-  "     return ¡FUERA DE AQUÍ!. \n" +
-  "color: #8892b0; font-size: 14px;",
+    "font-size: 16px; color: #ff6b6b;",
+  )
+}, 0)
+console.log(" if (You === 'Developer') {\n" +
+  "    return '📞 ¡Contáctame! 🚀😉';\n" +
+  "} else {\n" +
+  "    return '❌ ¡FUERA DE AQUÍ!';\n" +
+  "}",
+  "color: #8892b0; font-size: 14px; font-family: monospace; background: #1e1e1e; padding: 8px; border-radius: 6px;"
 )
