@@ -340,19 +340,75 @@ document.addEventListener("DOMContentLoaded", () => {
 
   clarity(globalThis, document, "clarity", "script", "rz1pnv8gvy")
 
-  // Device Fingerprinting
-  const initFingerprint = async () => {
-    try {
-      const opjs = window.opjs || window.msOpjs
-      const fp = await opjs({ API_KEY: "public_8W5zJQ1h-8vCOTFEOd3CO44ZZB8Iyu2pwQG" })
-      console.log("[v0] Device Fingerprint ID:", fp.visitorId)
-    } catch (error) {
-      console.warn("[v0] Fingerprint initialization failed:", error)
-    }
-  }
+  // Device Fingerprinting  DDOS protection
 
-  initFingerprint()
+  /**
+ * Event listener for 'fetch' events. This triggers on every request to the worker.
+ */
+addEventListener('fetch', event => {
+  event.respondWith(handleRequest(event.request))
 })
+
+/**
+ * Main handler for incoming requests.
+ * @param {Request} request - The incoming request object from the fetch event.
+ * @returns {Response} A response object with JA4 Signals in JSON format.
+ */
+async function handleRequest(request) {
+  // Safely access the ja4Signals object using optional chaining, which prevents errors if properties are undefined.
+  const ja4Signals = request.cf?.botManagement?.ja4Signals || {};
+
+  // Construct the response content, including both the original ja4Signals and the parsed signals.
+  const responseContent = {
+    ja4Signals: ja4Signals,
+    jaSignalsParsed: parseJA4Signals(ja4Signals)
+  };
+
+  // Return a JSON response with appropriate headers.
+  return new Response(JSON.stringify(responseContent), {
+    status: 200,
+    headers: {
+      "content-type": "application/json;charset=UTF-8"
+    }
+  })
+}
+
+/**
+ * Parses the JA4 Signals into categorized groups based on their names.
+ * @param {Object} ja4Signals - The JA4 Signals object that may contain various metrics.
+ * @returns {Object} An object with categorized JA4 Signals: ratios, ranks, and quantiles.
+ */
+function parseJA4Signals(ja4Signals) {
+  // Define the keys for each category of signals.
+  const ratios = ['h2h3_ratio_1h', 'heuristic_ratio_1h', 'browser_ratio_1h', 'cache_ratio_1h'];
+  const ranks = ['uas_rank_1h', 'paths_rank_1h', 'reqs_rank_1h', 'ips_rank_1h'];
+  const quantiles = ['reqs_quantile_1h', 'ips_quantile_1h'];
+
+  // Return an object with each category containing only the signals that are present.
+  return {
+    ratios: filterKeys(ja4Signals, ratios),
+    ranks: filterKeys(ja4Signals, ranks),
+    quantiles: filterKeys(ja4Signals, quantiles)
+  };
+}
+
+/**
+ * Filters the keys in the ja4Signals object that match the list of specified keys and are not undefined.
+ * @param {Object} ja4Signals - The JA4 Signals object.
+ * @param {Array<string>} keys - An array of keys to filter from the ja4Signals object.
+ * @returns {Object} A filtered object containing only the specified keys that are present in ja4Signals.
+ */
+function filterKeys(ja4Signals, keys) {
+  const filtered = {};
+  // Iterate over the specified keys and add them to the filtered object if they exist in ja4Signals.
+  keys.forEach(key => {
+    // Check if the key exists and is not undefined to handle optional presence of each signal.
+    if (ja4Signals && ja4Signals[key] !== undefined) {
+      filtered[key] = ja4Signals[key];
+    }
+  });
+  return filtered;
+}
 
 /**
  * Improved ParticlesBackground with secure random number generation
@@ -467,7 +523,6 @@ class ParticlesBackground {
     requestAnimationFrame(() => this.animate())
   }
 }
-
 setTimeout(() => {
   console.log("%c¡Detente!", "color: red; font-size: 40px; font-weight: bold;")
   console.log(
@@ -478,10 +533,9 @@ setTimeout(() => {
     "font-size: 16px; color: #ff6b6b;",
   )
 }, 0)
-console.log(" if (You === 'Developer') {\n" +
+console.log("%c if (You === 'Developer') {\n" +
   "    return '📞 ¡Contáctame! 🚀😉';\n" +
   "} else {\n" +
   "    return '❌ ¡FUERA DE AQUÍ!';\n" +
-  "}",
-  "color: #8892b0; font-size: 14px; font-family: monospace; background: #1e1e1e; padding: 8px; border-radius: 6px;"
+  "}", "color: #8892b0; font-size: 14px; font-family: monospace; background: #1e1e1e; padding: 8px; border-radius: 6px;",
 )
