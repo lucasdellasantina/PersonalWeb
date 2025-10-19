@@ -22,20 +22,7 @@
         })(window, document, "clarity", "script", "rz1pnv8gvy");
     </script>
     
-    <!-- Device Fingerprinting -->
-    <script src="https://cdn.overpoweredjs.com/loader/opjs"></script>
-    <script>
-        async function initFingerprint() {
-            try {
-                const fp = await opjs({ API_KEY: "public_8W5zJQ1h-8vCOTFEOd3CO44ZZB8Iyu2pwQG" });
-                console.log("[v0] Device Fingerprint ID:", fp.visitorId);
-            } catch (error) {
-                console.warn("[v0] Fingerprint initialization failed:", error);
-            }
-        }
-        initFingerprint();
-    </script>
-    
+
     <!-- Favicon Configuration -->
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
     <link rel="icon" type="image/png" href="assets/favicon-96x96.png" sizes="96x96">
@@ -47,7 +34,7 @@
     
     <!-- Added security headers as meta tags -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com https://www.clarity.ms https://cdn.overpoweredjs.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://static.cloudflareinsights.com https://www.clarity.ms https://api.overpoweredjs.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self';">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com https://www.clarity.ms ; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://static.cloudflareinsights.com https://www.clarity.ms ; frame-ancestors 'none'; base-uri 'self'; form-action 'self';">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="permissions-policy" content="geolocation=(), microphone=(), camera=(), payment=()">
