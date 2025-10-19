@@ -325,51 +325,37 @@ document.addEventListener("DOMContentLoaded", () => {
   })
 
   // Initialize particles
-  new ParticlesBackground("particles-canvas")(
-    // Microsoft Clarity Analytics
-    (globalScope, doc, apiName, scriptTag, trackingId) => {
-      // Initialize clarity array if not exists
-      if (!globalScope[apiName]) {
-        globalScope[apiName] = () => {
-          const queue = globalScope[apiName].q || []
-          queue.push(arguments)
-          globalScope[apiName].q = queue
-        }
-      }
+  new ParticlesBackground("particles-canvas")
 
-      // Create and configure script element
-      const clarityScript = doc.createElement(scriptTag)
-      clarityScript.async = true
-      clarityScript.src = "https://www.clarity.ms/tag/" + trackingId
+  const clarity = (globalScope, doc, apiName, scriptTag, trackingId) => {
+    // Initialize clarity array if not exists
+    if (!globalScope[apiName]) {
+      globalScope[apiName] = (...args) => {
+        const queue = globalScope[apiName].q || []
+        queue.push(args)
+        globalScope[apiName].q = queue
+      }
+    }
+  }
 
-      // Insert script into DOM
-      const firstScript = doc.getElementsByTagName(scriptTag)[0]
-      if (firstScript && firstScript.parentNode) {
-        firstScript.parentNode.insertBefore(clarityScript, firstScript)
-      }
-    },
-  )(
-    globalThis,
-    document,
-    "clarity",
-    "script",
-    "rz1pnv8gvy",
-  )(
-    // Device Fingerprinting
-    async function initFingerprint() {
-      try {
-        const opjs = window.opjs || window.msOpjs
-        const fp = await opjs({ API_KEY: "public_8W5zJQ1h-8vCOTFEOd3CO44ZZB8Iyu2pwQG" })
-        console.log("[v0] Device Fingerprint ID:", fp.visitorId)
-      } catch (error) {
-        console.warn("[v0] Fingerprint initialization failed:", error)
-      }
-    },
-  )()
+  clarity(globalThis, document, "clarity", "script", "rz1pnv8gvy")
+
+  // Device Fingerprinting
+  const initFingerprint = async () => {
+    try {
+      const opjs = window.opjs || window.msOpjs
+      const fp = await opjs({ API_KEY: "public_8W5zJQ1h-8vCOTFEOd3CO44ZZB8Iyu2pwQG" })
+      console.log("[v0] Device Fingerprint ID:", fp.visitorId)
+    } catch (error) {
+      console.warn("[v0] Fingerprint initialization failed:", error)
+    }
+  }
+
+  initFingerprint()
 })
 
 /**
- * Improved ParticlesBackground class with better security and performance
+ * Improved ParticlesBackground with secure random number generation
  * Manages animated particle background with constellation effect
  */
 class ParticlesBackground {
@@ -395,36 +381,38 @@ class ParticlesBackground {
   }
 
   /**
-   * Improved init() with better random number generation
+   * Secure random number generator using crypto.getRandomValues()
+   * @returns {number} Random value between 0 and 1
+   */
+  getSecureRandom() {
+    const crypto = window.crypto || window.msCrypto
+    if (crypto && crypto.getRandomValues) {
+      try {
+        const randomArray = new Uint32Array(1)
+        crypto.getRandomValues(randomArray)
+        return randomArray[0] / 0xffffffff
+      } catch (e) {
+        console.warn("[v0] Crypto API failed, falling back to Math.random()")
+        return Math.random()
+      }
+    }
+    return Math.random()
+  }
+
+  /**
    * Initializes particles with random positions and velocities
    */
   init() {
     this.particles = []
-    const crypto = window.crypto || window.msCrypto
-    const randomArray = new Uint32Array(this.particleCount * 5)
-
-    // Use crypto.getRandomValues() for better randomness when available
-    if (crypto && crypto.getRandomValues) {
-      try {
-        crypto.getRandomValues(randomArray)
-      } catch (e) {
-        console.warn("[v0] Crypto API not available, falling back to Math.random()")
-      }
-    }
 
     for (let i = 0; i < this.particleCount; i++) {
-      // Use crypto values if available, otherwise fall back to Math.random()
-      const useRandom = !crypto || !crypto.getRandomValues
-      const getRandom = () =>
-        useRandom ? Math.random() : randomArray[i * 5 + Math.floor(Math.random() * 5)] / 0xffffffff
-
       this.particles.push({
-        x: getRandom() * this.canvas.width,
-        y: getRandom() * this.canvas.height,
-        vx: (getRandom() - 0.5) * 0.5,
-        vy: (getRandom() - 0.5) * 0.5,
-        radius: getRandom() * 1.5 + 0.5,
-        opacity: getRandom() * 0.5 + 0.3,
+        x: this.getSecureRandom() * this.canvas.width,
+        y: this.getSecureRandom() * this.canvas.height,
+        vx: (this.getSecureRandom() - 0.5) * 0.5,
+        vy: (this.getSecureRandom() - 0.5) * 0.5,
+        radius: this.getSecureRandom() * 1.5 + 0.5,
+        opacity: this.getSecureRandom() * 0.5 + 0.3,
       })
     }
   }
