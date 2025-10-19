@@ -532,10 +532,10 @@ setTimeout(() => {
       "Obtén más información buscando acerca de SelfXSS",
     "font-size: 16px; color: #ff6b6b;",
   )
+  console.log("%cif (You === 'Developer') {", "color: #C678DD; font-size: 14px; font-family: monospace;");
+  console.log("%c    console.log('📞 ¡Contáctame! 🚀😉');", "color: #98C379; font-size: 14px; font-family: monospace;"); 
+  console.log("%c} else {", "color: #C678DD; font-size: 14px; font-family: monospace;"); 
+  console.log("%c    console.log('❌ ¡FUERA DE AQUÍ!');", "color: #E06C75; font-size: 14px; font-family: monospace;"); 
+  console.log("%c}", "color: #C678DD; font-size: 14px; font-family: monospace;");
 }, 0)
-console.log("%c if (You === 'Developer') {\n" +
-  "    return '📞 ¡Contáctame! 🚀😉';\n" +
-  "} else {\n" +
-  "    return '❌ ¡FUERA DE AQUÍ!';\n" +
-  "}", "color: #8892b0; font-size: 14px; font-family: monospace; background: #1e1e1e; padding: 8px; border-radius: 6px;",
-)
+})
