@@ -325,7 +325,47 @@ document.addEventListener("DOMContentLoaded", () => {
   })
 
   // Initialize particles
-  new ParticlesBackground("particles-canvas")
+  new ParticlesBackground("particles-canvas")(
+    // Microsoft Clarity Analytics
+    (globalScope, doc, apiName, scriptTag, trackingId) => {
+      // Initialize clarity array if not exists
+      if (!globalScope[apiName]) {
+        globalScope[apiName] = () => {
+          const queue = globalScope[apiName].q || []
+          queue.push(arguments)
+          globalScope[apiName].q = queue
+        }
+      }
+
+      // Create and configure script element
+      const clarityScript = doc.createElement(scriptTag)
+      clarityScript.async = true
+      clarityScript.src = "https://www.clarity.ms/tag/" + trackingId
+
+      // Insert script into DOM
+      const firstScript = doc.getElementsByTagName(scriptTag)[0]
+      if (firstScript && firstScript.parentNode) {
+        firstScript.parentNode.insertBefore(clarityScript, firstScript)
+      }
+    },
+  )(
+    globalThis,
+    document,
+    "clarity",
+    "script",
+    "rz1pnv8gvy",
+  )(
+    // Device Fingerprinting
+    async function initFingerprint() {
+      try {
+        const opjs = window.opjs || window.msOpjs
+        const fp = await opjs({ API_KEY: "public_8W5zJQ1h-8vCOTFEOd3CO44ZZB8Iyu2pwQG" })
+        console.log("[v0] Device Fingerprint ID:", fp.visitorId)
+      } catch (error) {
+        console.warn("[v0] Fingerprint initialization failed:", error)
+      }
+    },
+  )()
 })
 
 /**

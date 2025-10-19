@@ -73,13 +73,13 @@
     <a href="#main-content" class="sr-only">Saltar al contenido principal</a>
 
     <!-- Language Switcher -->
-    <div class="language-switcher" role="region" aria-label="Selector de idioma">
+    <section class="language-switcher" aria-label="Selector de idioma">
         <button class="lang-btn active" data-lang="es" aria-pressed="true" aria-label="Español">ES</button>
         <button class="lang-btn" data-lang="en" aria-pressed="false" aria-label="English">EN</button>
-    </div>
+    </section>
 
     <!-- Sidebar Navigation -->
-    <aside class="sidebar" role="navigation" aria-label="Navegación principal">
+    <nav class="sidebar" aria-label="Navegación principal">
         <div class="sidebar-content">
             <div class="profile">
                 <div class="profile-image" aria-hidden="true">
@@ -104,20 +104,20 @@
                 <a href="#contact" class="nav-link" data-i18n="nav-contact">Contacto</a>
             </nav>
 
-            <div class="social-links" role="list">
-                <a href="https://github.com/lucasdellasantina" aria-label="GitHub - Lucas della Santina" class="social-link" target="_blank" rel="noopener noreferrer">
+            <ul class="social-links">
+                <li><a href="https://github.com/lucasdellasantina" aria-label="GitHub - Lucas della Santina" class="social-link" target="_blank" rel="noopener noreferrer">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                         <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                     </svg>
-                </a>
-                <a href="https://www.linkedin.com/in/lucasdellasantina/" aria-label="LinkedIn - Lucas della Santina" class="social-link" target="_blank" rel="noopener noreferrer">
+                </a></li>
+                <li><a href="https://www.linkedin.com/in/lucasdellasantina/" aria-label="LinkedIn - Lucas della Santina" class="social-link" target="_blank" rel="noopener noreferrer">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                         <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                     </svg>
-                </a>
-            </div>
+                </a></li>
+            </ul>
         </div>
-    </aside>
+    </nav>
 
     <!-- Main Content -->
     <main class="main-content" id="main-content">
@@ -185,54 +185,54 @@
             <div class="skills-grid">
                 <div class="skill-category">
                     <h3 data-i18n="skills-electronics-title">Electrónica & Hardware</h3>
-                    <div class="skill-tags" role="list">
-                        <span class="skill-tag" role="listitem">PCB Design</span>
-                        <span class="skill-tag" role="listitem">Arduino</span>
-                        <span class="skill-tag" role="listitem">Raspberry Pi</span>
-                        <span class="skill-tag" role="listitem">ESP32/ESP8266</span>
-                        <span class="skill-tag" role="listitem">Microcontroladores</span>
-                        <span class="skill-tag" role="listitem">Sensores</span>
-                        <span class="skill-tag" role="listitem">FPGA</span>
-                    </div>
+                    <ul class="skill-tags">
+                        <li class="skill-tag">PCB Design</li>
+                        <li class="skill-tag">Arduino</li>
+                        <li class="skill-tag">Raspberry Pi</li>
+                        <li class="skill-tag">ESP32/ESP8266</li>
+                        <li class="skill-tag">Microcontroladores</li>
+                        <li class="skill-tag">Sensores</li>
+                        <li class="skill-tag">FPGA</li>
+                    </ul>
                 </div>
                 
                 <div class="skill-category">
                     <h3 data-i18n="skills-security-title">Ciberseguridad</h3>
-                    <div class="skill-tags" role="list">
-                        <span class="skill-tag" role="listitem">Penetration Testing</span>
-                        <span class="skill-tag" role="listitem">Network Security</span>
-                        <span class="skill-tag" role="listitem">Cryptography</span>
-                        <span class="skill-tag" role="listitem">Vulnerability Assessment</span>
-                        <span class="skill-tag" role="listitem">Wireshark</span>
-                        <span class="skill-tag" role="listitem">Metasploit</span>
-                        <span class="skill-tag" role="listitem">Kali Linux</span>
-                    </div>
+                    <ul class="skill-tags">
+                        <li class="skill-tag">Penetration Testing</li>
+                        <li class="skill-tag">Network Security</li>
+                        <li class="skill-tag">Cryptography</li>
+                        <li class="skill-tag">Vulnerability Assessment</li>
+                        <li class="skill-tag">Wireshark</li>
+                        <li class="skill-tag">Metasploit</li>
+                        <li class="skill-tag">Kali Linux</li>
+                    </ul>
                 </div>
                 
                 <div class="skill-category">
                     <h3 data-i18n="skills-iot-title">IoT & Conectividad</h3>
-                    <div class="skill-tags" role="list">
-                        <span class="skill-tag" role="listitem">MQTT</span>
-                        <span class="skill-tag" role="listitem">LoRaWAN</span>
-                        <span class="skill-tag" role="listitem">Zigbee</span>
-                        <span class="skill-tag" role="listitem">Bluetooth LE</span>
-                        <span class="skill-tag" role="listitem">WiFi</span>
-                        <span class="skill-tag" role="listitem">Node-RED</span>
-                        <span class="skill-tag" role="listitem">Home Assistant</span>
-                    </div>
+                    <ul class="skill-tags">
+                        <li class="skill-tag">MQTT</li>
+                        <li class="skill-tag">LoRaWAN</li>
+                        <li class="skill-tag">Zigbee</li>
+                        <li class="skill-tag">Bluetooth LE</li>
+                        <li class="skill-tag">WiFi</li>
+                        <li class="skill-tag">Node-RED</li>
+                        <li class="skill-tag">Home Assistant</li>
+                    </ul>
                 </div>
                 
                 <div class="skill-category">
                     <h3 data-i18n="skills-programming-title">Programación</h3>
-                    <div class="skill-tags" role="list">
-                        <span class="skill-tag" role="listitem">Python</span>
-                        <span class="skill-tag" role="listitem">C/C++</span>
-                        <span class="skill-tag" role="listitem">JavaScript</span>
-                        <span class="skill-tag" role="listitem">Bash</span>
-                        <span class="skill-tag" role="listitem">SQL</span>
-                        <span class="skill-tag" role="listitem">Git</span>
-                        <span class="skill-tag" role="listitem">Linux</span>
-                    </div>
+                    <ul class="skill-tags">
+                        <li class="skill-tag">Python</li>
+                        <li class="skill-tag">C/C++</li>
+                        <li class="skill-tag">JavaScript</li>
+                        <li class="skill-tag">Bash</li>
+                        <li class="skill-tag">SQL</li>
+                        <li class="skill-tag">Git</li>
+                        <li class="skill-tag">Linux</li>
+                    </ul>
                 </div>
             </div>
         </section>
@@ -252,11 +252,11 @@
                         <p data-i18n="exp1-desc">
                             Arquitectura de seguridad y diseño de soluciones de ciberseguridad para infraestructura bancaria. Análisis de vulnerabilidades y auditorías de seguridad.
                         </p>
-                        <div class="skill-tags" role="list">
-                            <span class="skill-tag" role="listitem">Security Architecture</span>
-                            <span class="skill-tag" role="listitem">Penetration Testing</span>
-                            <span class="skill-tag" role="listitem">Risk Assessment</span>
-                        </div>
+                        <ul class="skill-tags">
+                            <li class="skill-tag">Security Architecture</li>
+                            <li class="skill-tag">Penetration Testing</li>
+                            <li class="skill-tag">Risk Assessment</li>
+                        </ul>
                     </div>
                 </div>
 
@@ -268,11 +268,11 @@
                         <p data-i18n="exp2-desc">
                             Gestión de infraestructura del centro de datos, monitoreo de sistemas y optimización de recursos. Implementación de soluciones de automatización.
                         </p>
-                        <div class="skill-tags" role="list">
-                            <span class="skill-tag" role="listitem">Data Center</span>
-                            <span class="skill-tag" role="listitem">Infrastructure</span>
-                            <span class="skill-tag" role="listitem">Automation</span>
-                        </div>
+                        <ul class="skill-tags">
+                            <li class="skill-tag">Data Center</li>
+                            <li class="skill-tag">Infrastructure</li>
+                            <li class="skill-tag">Automation</li>
+                        </ul>
                     </div>
                 </div>
 
@@ -284,11 +284,11 @@
                         <p data-i18n="exp3-desc">
                             Consultoría en automatización del hogar y sistemas IoT. Implementación de soluciones con Home Assistant, Docker y microservicios.
                         </p>
-                        <div class="skill-tags" role="list">
-                            <span class="skill-tag" role="listitem">Home Assistant</span>
-                            <span class="skill-tag" role="listitem">Docker</span>
-                            <span class="skill-tag" role="listitem">IoT</span>
-                        </div>
+                        <ul class="skill-tags">
+                            <li class="skill-tag">Home Assistant</li>
+                            <li class="skill-tag">Docker</li>
+                            <li class="skill-tag">IoT</li>
+                        </ul>
                     </div>
                 </div>
 
@@ -300,11 +300,11 @@
                         <p data-i18n="exp4-desc">
                             Prácticas profesionales en ingeniería aeroespacial y sistemas embebidos. Desarrollo de componentes para proyectos de investigación.
                         </p>
-                        <div class="skill-tags" role="list">
-                            <span class="skill-tag" role="listitem">Aerospace</span>
-                            <span class="skill-tag" role="listitem">Embedded Systems</span>
-                            <span class="skill-tag" role="listitem">Research</span>
-                        </div>
+                        <ul class="skill-tags">
+                            <li class="skill-tag">Aerospace</li>
+                            <li class="skill-tag">Embedded Systems</li>
+                            <li class="skill-tag">Research</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -325,11 +325,11 @@
                         <p data-i18n="edu1-desc">
                             Formación integral en ingeniería electrónica con énfasis en sistemas embebidos, diseño de circuitos y automatización. Nota: 7.67/10
                         </p>
-                        <div class="skill-tags" role="list">
-                            <span class="skill-tag" role="listitem">Electrónica</span>
-                            <span class="skill-tag" role="listitem">PCB Design</span>
-                            <span class="skill-tag" role="listitem">Sistemas Embebidos</span>
-                        </div>
+                        <ul class="skill-tags">
+                            <li class="skill-tag">Electrónica</li>
+                            <li class="skill-tag">PCB Design</li>
+                            <li class="skill-tag">Sistemas Embebidos</li>
+                        </ul>
                     </div>
                 </div>
 
@@ -341,11 +341,11 @@
                         <p data-i18n="edu2-desc">
                             Formación técnica en electrónica con aplicaciones prácticas en automatización y control. Nota: 7.51/10
                         </p>
-                        <div class="skill-tags" role="list">
-                            <span class="skill-tag" role="listitem">Técnico</span>
-                            <span class="skill-tag" role="listitem">Automatización</span>
-                            <span class="skill-tag" role="listitem">Control</span>
-                        </div>
+                        <ul class="skill-tags">
+                            <li class="skill-tag">Técnico</li>
+                            <li class="skill-tag">Automatización</li>
+                            <li class="skill-tag">Control</li>
+                        </ul>
                     </div>
                 </div>
 
@@ -357,11 +357,11 @@
                         <p data-i18n="edu3-desc">
                             Educación secundaria obligatoria con especialización técnica en electrónica. Formación en diseño CAD y circuitos.
                         </p>
-                        <div class="skill-tags" role="list">
-                            <span class="skill-tag" role="listitem">AutoCAD</span>
-                            <span class="skill-tag" role="listitem">Circuitos</span>
-                            <span class="skill-tag" role="listitem">Electrónica Básica</span>
-                        </div>
+                        <ul class="skill-tags">
+                            <li class="skill-tag">AutoCAD</li>
+                            <li class="skill-tag">Circuitos</li>
+                            <li class="skill-tag">Electrónica Básica</li>
+                        </ul>
                     </div>
                 </div>
 
@@ -373,11 +373,11 @@
                         <p data-i18n="edu4-desc">
                             Estudiante avanzado de Ingeniería Industrial. Complementando formación con gestión, optimización de procesos y termodinámica.
                         </p>
-                        <div class="skill-tags" role="list">
-                            <span class="skill-tag" role="listitem">Gestión</span>
-                            <span class="skill-tag" role="listitem">Optimización</span>
-                            <span class="skill-tag" role="listitem">Procesos</span>
-                        </div>
+                        <ul class="skill-tags">
+                            <li class="skill-tag">Gestión</li>
+                            <li class="skill-tag">Optimización</li>
+                            <li class="skill-tag">Procesos</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -396,10 +396,10 @@
                         <span class="cert-issuer">Fortinet</span>
                     </div>
                     <p class="cert-date">Expedición: jul. 2025</p>
-                    <div class="skill-tags" role="list">
-                        <span class="skill-tag" role="listitem">Ciberseguridad</span>
-                        <span class="skill-tag" role="listitem">Fundamentos</span>
-                    </div>
+                    <ul class="skill-tags">
+                        <li class="skill-tag">Ciberseguridad</li>
+                        <li class="skill-tag">Fundamentos</li>
+                    </ul>
                 </div>
 
                 <div class="cert-card">
@@ -408,10 +408,10 @@
                         <span class="cert-issuer">Cisco</span>
                     </div>
                     <p class="cert-date">Expedición: feb. 2025</p>
-                    <div class="skill-tags" role="list">
-                        <span class="skill-tag" role="listitem">Ethical Hacking</span>
-                        <span class="skill-tag" role="listitem">Pentesting</span>
-                    </div>
+                    <ul class="skill-tags">
+                        <li class="skill-tag">Ethical Hacking</li>
+                        <li class="skill-tag">Pentesting</li>
+                    </ul>
                 </div>
 
                 <div class="cert-card">
@@ -420,10 +420,10 @@
                         <span class="cert-issuer">Cisco</span>
                     </div>
                     <p class="cert-date">Expedición: jun. 2025</p>
-                    <div class="skill-tags" role="list">
-                        <span class="skill-tag" role="listitem">Hacking Ético</span>
-                        <span class="skill-tag" role="listitem">Seguridad</span>
-                    </div>
+                    <ul class="skill-tags">
+                        <li class="skill-tag">Hacking Ético</li>
+                        <li class="skill-tag">Seguridad</li>
+                    </ul>
                 </div>
 
                 <div class="cert-card">
@@ -432,10 +432,10 @@
                         <span class="cert-issuer">Qualys</span>
                     </div>
                     <p class="cert-date">Expedición: jun. 2025 | Vencimiento: jun. 2027</p>
-                    <div class="skill-tags" role="list">
-                        <span class="skill-tag" role="listitem">Asset Management</span>
-                        <span class="skill-tag" role="listitem">Qualys</span>
-                    </div>
+                    <ul class="skill-tags">
+                        <li class="skill-tag">Asset Management</li>
+                        <li class="skill-tag">Qualys</li>
+                    </ul>
                 </div>
 
                 <div class="cert-card">
@@ -444,10 +444,10 @@
                         <span class="cert-issuer">Qualys</span>
                     </div>
                     <p class="cert-date">Expedición: ene. 2025 | Vencimiento: ene. 2027</p>
-                    <div class="skill-tags" role="list">
-                        <span class="skill-tag" role="listitem">Web Security</span>
-                        <span class="skill-tag" role="listitem">Scanning</span>
-                    </div>
+                    <ul class="skill-tags">
+                        <li class="skill-tag">Web Security</li>
+                        <li class="skill-tag">Scanning</li>
+                    </ul>
                 </div>
 
                 <div class="cert-card">
@@ -456,10 +456,10 @@
                         <span class="cert-issuer">Palo Alto Networks</span>
                     </div>
                     <p class="cert-date">Expedición: dic. 2024</p>
-                    <div class="skill-tags" role="list">
-                        <span class="skill-tag" role="listitem">Firewall</span>
-                        <span class="skill-tag" role="listitem">Network Security</span>
-                    </div>
+                    <ul class="skill-tags">
+                        <li class="skill-tag">Firewall</li>
+                        <li class="skill-tag">Network Security</li>
+                    </ul>
                 </div>
 
                 <div class="cert-card">
@@ -468,10 +468,10 @@
                         <span class="cert-issuer">Google</span>
                     </div>
                     <p class="cert-date">Expedición: nov. 2024</p>
-                    <div class="skill-tags" role="list">
-                        <span class="skill-tag" role="listitem">Ciberseguridad</span>
-                        <span class="skill-tag" role="listitem">Google</span>
-                    </div>
+                    <ul class="skill-tags">
+                        <li class="skill-tag">Ciberseguridad</li>
+                        <li class="skill-tag">Google</li>
+                    </ul>
                 </div>
 
                 <div class="cert-card">
@@ -480,10 +480,10 @@
                         <span class="cert-issuer">Cisco</span>
                     </div>
                     <p class="cert-date">Expedición: oct. 2024</p>
-                    <div class="skill-tags" role="list">
-                        <span class="skill-tag" role="listitem">Analyst</span>
-                        <span class="skill-tag" role="listitem">Career Path</span>
-                    </div>
+                    <ul class="skill-tags">
+                        <li class="skill-tag">Analyst</li>
+                        <li class="skill-tag">Career Path</li>
+                    </ul>
                 </div>
 
                 <div class="cert-card">
@@ -492,10 +492,10 @@
                         <span class="cert-issuer">Cisco</span>
                     </div>
                     <p class="cert-date">Expedición: jul. 2024</p>
-                    <div class="skill-tags" role="list">
-                        <span class="skill-tag" role="listitem">Fundamentos</span>
-                        <span class="skill-tag" role="listitem">Cisco</span>
-                    </div>
+                    <ul class="skill-tags">
+                        <li class="skill-tag">Fundamentos</li>
+                        <li class="skill-tag">Cisco</li>
+                    </ul>
                 </div>
 
                 <div class="cert-card">
@@ -504,10 +504,10 @@
                         <span class="cert-issuer">Cisco</span>
                     </div>
                     <p class="cert-date">Expedición: jul. 2024</p>
-                    <div class="skill-tags" role="list">
-                        <span class="skill-tag" role="listitem">Networking</span>
-                        <span class="skill-tag" role="listitem">Packet Tracer</span>
-                    </div>
+                    <ul class="skill-tags">
+                        <li class="skill-tag">Networking</li>
+                        <li class="skill-tag">Packet Tracer</li>
+                    </ul>
                 </div>
             </div>
         </section>
@@ -538,10 +538,10 @@
                     <p data-i18n="project1-desc">
                         Plataforma completa de seguridad para dispositivos IoT con detección de intrusiones, análisis de tráfico en tiempo real y alertas automáticas.
                     </p>
-                    <div class="skill-tags" role="list">
-                        <span class="skill-tag" role="listitem">Python</span>
-                        <span class="skill-tag" role="listitem">MQTT</span>
-                        <span class="skill-tag" role="listitem">Machine Learning</span>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">MQTT</span>
+                        <span class="skill-tag">Machine Learning</span>
                     </div>
                 </article>
                 
@@ -565,10 +565,10 @@
                     <p data-i18n="project2-desc">
                         Red distribuida de sensores IoT para monitoreo ambiental con comunicación LoRaWAN y visualización de datos en tiempo real.
                     </p>
-                    <div class="skill-tags" role="list">
-                        <span class="skill-tag" role="listitem">ESP32</span>
-                        <span class="skill-tag" role="listitem">LoRaWAN</span>
-                        <span class="skill-tag" role="listitem">Node-RED</span>
+                    <div class="skill-tags">
+                        <span class="skill-tag">ESP32</span>
+                        <span class="skill-tag">LoRaWAN</span>
+                        <span class="skill-tag">Node-RED</span>
                     </div>
                 </article>
                 
@@ -594,10 +594,10 @@
                     <p data-i18n="project3-desc">
                         Suite de herramientas para análisis de seguridad y pentesting específico para dispositivos IoT y protocolos de comunicación.
                     </p>
-                    <div class="skill-tags" role="list">
-                        <span class="skill-tag" role="listitem">Python</span>
-                        <span class="skill-tag" role="listitem">Wireshark</span>
-                        <span class="skill-tag" role="listitem">Scapy</span>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Wireshark</span>
+                        <span class="skill-tag">Scapy</span>
                     </div>
                 </article>
                 
@@ -622,10 +622,10 @@
                     <p data-i18n="project4-desc">
                         Gateway personalizado con cifrado end-to-end para comunicación segura entre dispositivos IoT y la nube.
                     </p>
-                    <div class="skill-tags" role="list">
-                        <span class="skill-tag" role="listitem">Raspberry Pi</span>
-                        <span class="skill-tag" role="listitem">TLS/SSL</span>
-                        <span class="skill-tag" role="listitem">Docker</span>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Raspberry Pi</span>
+                        <span class="skill-tag">TLS/SSL</span>
+                        <span class="skill-tag">Docker</span>
                     </div>
                 </article>
             </div>

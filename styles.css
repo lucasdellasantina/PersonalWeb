@@ -177,11 +177,21 @@ body {
   display: flex;
   justify-content: center;
   gap: 1.5rem;
+  list-style: none; /* Added for ul/li semantic elements */
+}
+
+.social-links li {
+  /* Added for ul/li semantic elements */
+  display: flex;
+  align-items: center;
 }
 
 .social-link {
   color: var(--text-secondary);
   transition: var(--transition);
+  display: flex; /* Added for better alignment with icons */
+  align-items: center; /* Added for better alignment with icons */
+  justify-content: center; /* Added for better alignment with icons */
 }
 
 .social-link:hover {
@@ -324,6 +334,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
+  list-style: none; /* Added for ul/li semantic elements */
 }
 
 .skill-tag {
