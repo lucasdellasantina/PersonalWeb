@@ -7,6 +7,8 @@ const translations = {
     "nav-about": "Sobre Mí",
     "nav-skills": "Habilidades",
     "nav-experience": "Experiencia",
+    "nav-education": "Educación",
+    "nav-certifications": "Certificaciones",
     "nav-projects": "Proyectos",
     "nav-contact": "Contacto",
     "about-title": "Sobre Mí",
@@ -63,6 +65,25 @@ const translations = {
     "edu4-desc":
       "Estudiante avanzado de Ingeniería Industrial. Complementando formación con gestión, optimización de procesos y termodinámica.",
     "certifications-title": "Certificaciones",
+    "projects-title": "Proyectos Destacados",
+    "project1-title": "Sistema de Seguridad IoT",
+    "project1-desc":
+      "Plataforma completa de seguridad para dispositivos IoT con detección de intrusiones, análisis de tráfico en tiempo real y alertas automáticas.",
+    "project2-title": "Red de Sensores Ambientales",
+    "project2-desc":
+      "Red distribuida de sensores IoT para monitoreo ambiental con comunicación LoRaWAN y visualización de datos en tiempo real.",
+    "project3-title": "Herramienta de Pentesting IoT",
+    "project3-desc":
+      "Suite de herramientas para análisis de seguridad y pentesting específico para dispositivos IoT y protocolos de comunicación.",
+    "project4-title": "Gateway IoT Seguro",
+    "project4-desc":
+      "Gateway personalizado con cifrado end-to-end para comunicación segura entre dispositivos IoT y la nube.",
+    "contact-title": "Contacto",
+    "contact-text":
+      "¿Tienes un proyecto interesante en mente? ¿Necesitas consultoría en ciberseguridad o IoT? Me encantaría escuchar sobre tu idea y ver cómo puedo ayudarte.",
+    "contact-github": "Ver en GitHub",
+    "contact-linkedin": "Conectar en LinkedIn",
+    "footer-text": "Diseñado y construido con pasión por la tecnología",
   },
   en: {
     name: "Lucas della Santina",
@@ -71,6 +92,8 @@ const translations = {
     "nav-about": "About",
     "nav-skills": "Skills",
     "nav-experience": "Experience",
+    "nav-education": "Education",
+    "nav-certifications": "Certifications",
     "nav-projects": "Projects",
     "nav-contact": "Contact",
     "about-title": "About Me",
@@ -127,6 +150,25 @@ const translations = {
     "edu4-desc":
       "Advanced student of Industrial Engineering. Complementing training with management, process optimization and thermodynamics.",
     "certifications-title": "Certifications",
+    "projects-title": "Featured Projects",
+    "project1-title": "IoT Security System",
+    "project1-desc":
+      "Complete security platform for IoT devices with intrusion detection, real-time traffic analysis and automatic alerts.",
+    "project2-title": "Environmental Sensor Network",
+    "project2-desc":
+      "Distributed IoT sensor network for environmental monitoring with LoRaWAN communication and real-time data visualization.",
+    "project3-title": "IoT Pentesting Tool",
+    "project3-desc":
+      "Suite of tools for security analysis and pentesting specific to IoT devices and communication protocols.",
+    "project4-title": "Secure IoT Gateway",
+    "project4-desc":
+      "Custom gateway with end-to-end encryption for secure communication between IoT devices and the cloud.",
+    "contact-title": "Contact",
+    "contact-text":
+      "Do you have an interesting project in mind? Need consulting in cybersecurity or IoT? I would love to hear about your idea and see how I can help.",
+    "contact-github": "View on GitHub",
+    "contact-linkedin": "Connect on LinkedIn",
+    "footer-text": "Designed and built with passion for technology",
   },
 }
 

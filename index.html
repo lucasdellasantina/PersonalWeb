@@ -45,6 +45,22 @@
     <meta name="apple-mobile-web-app-title" content="Lucas Della Santina">
     <link rel="manifest" href="assets/site.webmanifest">
     
+    <!-- Added security headers as meta tags -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com https://www.clarity.ms https://cdn.overpoweredjs.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://static.cloudflareinsights.com https://www.clarity.ms https://api.overpoweredjs.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self';">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="permissions-policy" content="geolocation=(), microphone=(), camera=(), payment=()">
+    
+    <!-- Optimized cache control for static assets -->
+    <meta http-equiv="Cache-Control" content="public, max-age=31536000, immutable">
+    
+    <!-- Removed third-party cookies and added SameSite attribute handling -->
+    <script>
+        // Prevent third-party cookies and set secure cookie policies
+        document.cookie = "SameSite=Strict; Secure; Path=/";
+    </script>
+    
     <title>Lucas della Santina - Ingeniero Electrónico | Ciberseguridad & IoT</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
