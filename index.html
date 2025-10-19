@@ -36,10 +36,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Content-Security-Policy" content="
         default-src 'self';
-        script-src 'self' 'strict-dynamic' 'nonce-{RANDOM_VALUE}' https://static.cloudflareinsights.com;
-        script-src-elem 'self' 'strict-dynamic' 'nonce-{RANDOM_VALUE}' https://static.cloudflareinsights.com;
-        style-src 'self' 'nonce-{RANDOM_VALUE}' https://fonts.googleapis.com;
-        style-src-elem 'self' 'nonce-{RANDOM_VALUE}' https://fonts.googleapis.com;
+        script-src 'self' 'unsafe-inline' 'unsafe-eval' https://static.cloudflareinsights.com https://www.dellasantina.com.ar;
+        script-src-elem 'self' 'unsafe-inline' 'unsafe-eval' https://static.cloudflareinsights.com https://www.dellasantina.com.ar;
+        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+        style-src-attr 'self' 'unsafe-inline';
+        style-src-elem 'self' 'unsafe-inline' https://fonts.googleapis.com;
         img-src 'self' data: https:;
         font-src 'self' https://fonts.gstatic.com;
         connect-src 'self' https://static.cloudflareinsights.com https://a.clarity.ms https://b.clarity.ms https://c.clarity.ms https://d.clarity.ms https://e.clarity.ms https://f.clarity.ms https://g.clarity.ms https://h.clarity.ms https://i.clarity.ms https://j.clarity.ms https://k.clarity.ms https://l.clarity.ms https://m.clarity.ms https://n.clarity.ms https://o.clarity.ms https://p.clarity.ms https://q.clarity.ms https://r.clarity.ms https://s.clarity.ms https://t.clarity.ms https://u.clarity.ms https://v.clarity.ms https://w.clarity.ms https://x.clarity.ms;
