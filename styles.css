@@ -462,6 +462,57 @@ body {
   line-height: 1.6;
 }
 
+/* Added certifications grid styling */
+.certifications-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.cert-card {
+  background: var(--bg-secondary);
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--border-color);
+  transition: var(--transition);
+}
+
+.cert-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent-primary);
+  box-shadow: 0 10px 30px rgba(0, 217, 255, 0.1);
+}
+
+.cert-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.cert-header h3 {
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.cert-issuer {
+  background: var(--bg-tertiary);
+  color: var(--accent-secondary);
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.375rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.cert-date {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+
 /* Contact Section */
 .contact-content {
   max-width: 700px;
@@ -531,6 +582,32 @@ body {
   color: var(--accent-primary);
 }
 
+/* Added services link styling in footer */
+.services-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 0.5rem;
+  color: var(--accent-primary);
+  text-decoration: none;
+  transition: var(--transition);
+  width: 24px;
+  height: 24px;
+  border-radius: 0.375rem;
+  border: 1px solid transparent;
+}
+
+.services-link:hover {
+  background: rgba(0, 217, 255, 0.1);
+  border-color: var(--accent-primary);
+  transform: rotate(90deg);
+}
+
+.services-link svg {
+  width: 100%;
+  height: 100%;
+}
+
 /* Responsive Design */
 @media (max-width: 1024px) {
   .sidebar {
@@ -593,6 +670,18 @@ body {
 
   .timeline-item {
     padding-left: 1.5rem;
+  }
+
+  .certifications-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cert-header {
+    flex-direction: column;
+  }
+
+  .cert-issuer {
+    align-self: flex-start;
   }
 }
 

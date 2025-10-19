@@ -29,39 +29,40 @@ const translations = {
     "skills-programming-title": "Programación",
     "experience-title": "Experiencia",
     present: "Presente",
-    "exp1-title": "Ingeniero de Seguridad IoT",
-    "exp1-company": "Empresa Tecnológica",
+    "exp1-title": "Junior Security Architect",
+    "exp1-company": "Banco de Córdoba",
     "exp1-desc":
-      "Desarrollo e implementación de soluciones de seguridad para dispositivos IoT. Auditorías de seguridad, análisis de vulnerabilidades y diseño de arquitecturas seguras para sistemas conectados.",
-    "exp2-title": "Ingeniero Electrónico",
-    "exp2-company": "Startup de IoT",
+      "Arquitectura de seguridad y diseño de soluciones de ciberseguridad para infraestructura bancaria. Análisis de vulnerabilidades y auditorías de seguridad.",
+    "exp2-title": "Facilities Management Specialist",
+    "exp2-company": "Banco de Córdoba",
     "exp2-desc":
-      "Diseño y desarrollo de dispositivos IoT desde el concepto hasta la producción. Implementación de protocolos de comunicación y optimización de consumo energético.",
-    "exp3-title": "Desarrollador de Sistemas Embebidos",
-    "exp3-company": "Empresa de Automatización",
+      "Gestión de infraestructura del centro de datos, monitoreo de sistemas y optimización de recursos. Implementación de soluciones de automatización.",
+    "exp3-title": "Consultor Home Assistant",
+    "exp3-company": "Autónomo",
     "exp3-desc":
-      "Programación de microcontroladores y desarrollo de firmware para sistemas de automatización industrial. Integración de sensores y actuadores.",
-    "projects-title": "Proyectos Destacados",
-    "project1-title": "Sistema de Seguridad IoT",
-    "project1-desc":
-      "Plataforma completa de seguridad para dispositivos IoT con detección de intrusiones, análisis de tráfico en tiempo real y alertas automáticas.",
-    "project2-title": "Red de Sensores Ambientales",
-    "project2-desc":
-      "Red distribuida de sensores IoT para monitoreo ambiental con comunicación LoRaWAN y visualización de datos en tiempo real.",
-    "project3-title": "Herramienta de Pentesting IoT",
-    "project3-desc":
-      "Suite de herramientas para análisis de seguridad y pentesting específico para dispositivos IoT y protocolos de comunicación.",
-    "project4-title": "Gateway IoT Seguro",
-    "project4-desc":
-      "Gateway personalizado con cifrado end-to-end para comunicación segura entre dispositivos IoT y la nube.",
-    "contact-title": "Contacto",
-    "contact-text":
-      "¿Tienes un proyecto interesante en mente? ¿Necesitas consultoría en ciberseguridad o IoT? Me encantaría escuchar sobre tu idea y ver cómo puedo ayudarte.",
-    "contact-button": "Enviar Mensaje",
-    "contact-github": "Ver en GitHub",
-    "contact-linkedin": "Conectar en LinkedIn",
-    location: "Tu Ciudad, País",
-    "footer-text": "Diseñado y construido con pasión por la tecnología",
+      "Consultoría en automatización del hogar y sistemas IoT. Implementación de soluciones con Home Assistant, Docker y microservicios.",
+    "exp4-title": "Practicante de Ingeniería",
+    "exp4-company": "Innova Space",
+    "exp4-desc":
+      "Prácticas profesionales en ingeniería aeroespacial y sistemas embebidos. Desarrollo de componentes para proyectos de investigación.",
+    "education-title": "Educación",
+    "edu1-title": "Grado en Ingeniería Electrónica",
+    "edu1-company": "Universidad Tecnológica Nacional (UTN)",
+    "edu1-desc":
+      "Formación integral en ingeniería electrónica con énfasis en sistemas embebidos, diseño de circuitos y automatización. Nota: 7.67/10",
+    "edu2-title": "Técnico Universitario en Electrónica",
+    "edu2-company": "Universidad Tecnológica Nacional (UTN)",
+    "edu2-desc":
+      "Formación técnica en electrónica con aplicaciones prácticas en automatización y control. Nota: 7.51/10",
+    "edu3-title": "Técnico de Nivel Medio en Electrónica",
+    "edu3-company": 'I.P.E.T. N° 51 "Nicolás Avellaneda"',
+    "edu3-desc":
+      "Educación secundaria obligatoria con especialización técnica en electrónica. Formación en diseño CAD y circuitos.",
+    "edu4-title": "Ingeniería Industrial (En Curso)",
+    "edu4-company": "Universidad Tecnológica Nacional (UTN)",
+    "edu4-desc":
+      "Estudiante avanzado de Ingeniería Industrial. Complementando formación con gestión, optimización de procesos y termodinámica.",
+    "certifications-title": "Certificaciones",
   },
   en: {
     name: "Lucas della Santina",
@@ -92,39 +93,40 @@ const translations = {
     "skills-programming-title": "Programming",
     "experience-title": "Experience",
     present: "Present",
-    "exp1-title": "IoT Security Engineer",
-    "exp1-company": "Technology Company",
+    "exp1-title": "Junior Security Architect",
+    "exp1-company": "Banco de Córdoba",
     "exp1-desc":
-      "Development and implementation of security solutions for IoT devices. Security audits, vulnerability analysis, and design of secure architectures for connected systems.",
-    "exp2-title": "Electronic Engineer",
-    "exp2-company": "IoT Startup",
+      "Security architecture and cybersecurity solutions design for banking infrastructure. Vulnerability analysis and security audits.",
+    "exp2-title": "Facilities Management Specialist",
+    "exp2-company": "Banco de Córdoba",
     "exp2-desc":
-      "Design and development of IoT devices from concept to production. Implementation of communication protocols and power consumption optimization.",
-    "exp3-title": "Embedded Systems Developer",
-    "exp3-company": "Automation Company",
+      "Data center infrastructure management, systems monitoring and resource optimization. Implementation of automation solutions.",
+    "exp3-title": "Home Assistant Consultant",
+    "exp3-company": "Freelance",
     "exp3-desc":
-      "Microcontroller programming and firmware development for industrial automation systems. Integration of sensors and actuators.",
-    "projects-title": "Featured Projects",
-    "project1-title": "IoT Security System",
-    "project1-desc":
-      "Complete security platform for IoT devices with intrusion detection, real-time traffic analysis, and automatic alerts.",
-    "project2-title": "Environmental Sensor Network",
-    "project2-desc":
-      "Distributed network of IoT sensors for environmental monitoring with LoRaWAN communication and real-time data visualization.",
-    "project3-title": "IoT Pentesting Tool",
-    "project3-desc":
-      "Suite of tools for security analysis and pentesting specific to IoT devices and communication protocols.",
-    "project4-title": "Secure IoT Gateway",
-    "project4-desc":
-      "Custom gateway with end-to-end encryption for secure communication between IoT devices and the cloud.",
-    "contact-title": "Contact",
-    "contact-text":
-      "Do you have an interesting project in mind? Need cybersecurity or IoT consulting? I would love to hear about your idea and see how I can help you.",
-    "contact-button": "Send Message",
-    "contact-github": "View on GitHub",
-    "contact-linkedin": "Connect on LinkedIn",
-    location: "Your City, Country",
-    "footer-text": "Designed and built with passion for technology",
+      "Consulting in home automation and IoT systems. Implementation of solutions with Home Assistant, Docker and microservices.",
+    "exp4-title": "Engineering Intern",
+    "exp4-company": "Innova Space",
+    "exp4-desc":
+      "Professional internship in aerospace engineering and embedded systems. Development of components for research projects.",
+    "education-title": "Education",
+    "edu1-title": "Degree in Electronic Engineering",
+    "edu1-company": "National Technological University (UTN)",
+    "edu1-desc":
+      "Comprehensive training in electronic engineering with emphasis on embedded systems, circuit design and automation. Grade: 7.67/10",
+    "edu2-title": "University Technician in Electronics",
+    "edu2-company": "National Technological University (UTN)",
+    "edu2-desc":
+      "Technical training in electronics with practical applications in automation and control. Grade: 7.51/10",
+    "edu3-title": "Mid-Level Technician in Electronics",
+    "edu3-company": 'I.P.E.T. N° 51 "Nicolás Avellaneda"',
+    "edu3-desc":
+      "Compulsory secondary education with technical specialization in electronics. Training in CAD design and circuits.",
+    "edu4-title": "Industrial Engineering (In Progress)",
+    "edu4-company": "National Technological University (UTN)",
+    "edu4-desc":
+      "Advanced student of Industrial Engineering. Complementing training with management, process optimization and thermodynamics.",
+    "certifications-title": "Certifications",
   },
 }
 
