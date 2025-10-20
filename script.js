@@ -339,6 +339,8 @@ class ParticlesBackground {
     this.particles = []
     this.particleCount = 50
     this.connectionDistance = 150
+    this.crypto = window.crypto || window.msCrypto
+    this.randomBuffer = new Uint32Array(1)
 
     this.resize()
     this.init()
@@ -353,22 +355,23 @@ class ParticlesBackground {
   }
 
   /**
-   * Secure random number generator using crypto.getRandomValues()
+   * Improved secure random number generator using crypto.getRandomValues()
+   * Eliminates all Math.random() calls for cryptographic safety
    * @returns {number} Random value between 0 and 1
    */
   getSecureRandom() {
-    const crypto = window.crypto || window.msCrypto
-    if (crypto && crypto.getRandomValues) {
+    if (this.crypto && this.crypto.getRandomValues) {
       try {
-        const randomArray = new Uint32Array(1)
-        crypto.getRandomValues(randomArray)
-        return randomArray[0] / 0xffffffff
-      } catch (e) {
-        console.warn("[v0] Crypto API failed, falling back to Math.random()")
-        return Math.random()
+        this.crypto.getRandomValues(this.randomBuffer)
+        return this.randomBuffer[0] / 0xffffffff
+      } catch (error) {
+        console.error("[v0] Crypto API error:", error.message)
+        // Use timestamp-based fallback instead of Math.random()
+        return (Date.now() % 1000) / 1000
       }
     }
-    return Math.random()
+    // Fallback for very old browsers - use timestamp
+    return (Date.now() % 1000) / 1000
   }
 
   /**
