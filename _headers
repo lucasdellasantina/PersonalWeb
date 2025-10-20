@@ -1,9 +1,9 @@
 /*
   # ----------------------------------------------------------------------
-  # SEGURIDAD - Encabezados críticos (Para forzar anulación)
+  # SEGURIDAD - Encabezados críticos
   # ----------------------------------------------------------------------
   
-  # Este encabezado vacío ayuda a anular el CSP inyectado por Cloudflare.
+  # Este es el encabezado vacio de anulación.
   Content-Security-Policy: 
   
   X-Frame-Options: DENY
@@ -24,7 +24,7 @@
   Cache-Control: public, max-age=3600, must-revalidate
   
   # ----------------------------------------------------------------------
-  # CSP DEFINITIVO (Cloudflare Pages compatible con Rocket Loader)
+  # CSP DEFINITIVO y COMPLETO (Cloudflare Pages compatible con Rocket Loader)
   # ----------------------------------------------------------------------
   
   Content-Security-Policy: default-src 'self' https://www.dellasantina.com.ar; 
