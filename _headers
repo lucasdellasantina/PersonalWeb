@@ -1,44 +1,48 @@
 /*
-  # ----------------------------------------------------------------------
-  # SEGURIDAD - Encabezados críticos
-  # ----------------------------------------------------------------------
-  
-  # Este es el encabezado vacio de anulación.
-  Content-Security-Policy: 
-  
-  X-Frame-Options: DENY
-  X-Content-Type-Options: nosniff
-  Referrer-Policy: strict-origin-when-cross-origin
-  Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=()
-  X-DNS-Prefetch-Control: on
-  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+# ----------------------------------------------------------------------
+# SEGURIDAD - Encabezados críticos
+# ----------------------------------------------------------------------
 
-  # ----------------------------------------------------------------------
-  # Rendimiento / Caché
-  # ----------------------------------------------------------------------
+# Encabezados de Seguridad
+X-Frame-Options: DENY
+X-Content-Type-Options: nosniff
+Referrer-Policy: strict-origin-when-cross-origin
+Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=()
+X-DNS-Prefetch-Control: on
+Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+
+# ----------------------------------------------------------------------
+# Rendimiento / Caché
+# ----------------------------------------------------------------------
 
 /assets/*
-  Cache-Control: public, max-age=31536000, immutable
+Cache-Control: public, max-age=31536000, immutable
 
 /
-  Cache-Control: public, max-age=3600, must-revalidate
-  
-  # ----------------------------------------------------------------------
-  # CSP DEFINITIVO y COMPLETO (Cloudflare Pages compatible con Rocket Loader)
-  # ----------------------------------------------------------------------
-  
-  Content-Security-Policy: default-src 'self' https://www.dellasantina.com.ar; 
-    script-src 'self' 'unsafe-eval' 'nonce-' https://static.cloudflareinsights.com https://www.clarity.ms https://scripts.clarity.ms https://www.clarity.ms/tag/; 
-    script-src-elem 'self' 'unsafe-eval' 'nonce-' https://static.cloudflareinsights.com https://www.clarity.ms https://scripts.clarity.ms https://www.clarity.ms/tag/; 
-    style-src 'self' 'unsafe-inline' 'nonce-' https://fonts.googleapis.com; 
-    style-src-elem 'self' 'unsafe-inline' 'nonce-' https://fonts.googleapis.com; 
-    img-src 'self' data: https:; 
-    font-src 'self' https://fonts.gstatic.com; 
-    connect-src 'self' https://static.cloudflareinsights.com https://a.clarity.ms https://b.clarity.ms https://c.clarity.ms https://d.clarity.ms https://e.clarity.ms https://f.clarity.ms https://g.clarity.ms https://h.clarity.ms https://i.clarity.ms https://j.clarity.ms https://k.clarity.ms https://l.clarity.ms https://m.clarity.ms https://n.clarity.ms https://o.clarity.ms https://p.clarity.ms https://q.clarity.ms https://r.clarity.ms https://s.clarity.ms https://t.clarity.ms https://u.clarity.ms https://v.clarity.ms https://w.clarity.ms https://x.clarity.ms; 
-    manifest-src 'self'; 
-    form-action 'self'; 
-    base-uri 'self'; 
-    object-src 'none'; 
-    frame-ancestors 'none'; 
-    report-uri /csp-report-endpoint; 
-    report-to csp-endpoint
+Cache-Control: public, max-age=3600, must-revalidate
+
+# ----------------------------------------------------------------------
+# CSP ADAPTADO para Cloudflare Pages, Rocket Loader y Clarity
+# ----------------------------------------------------------------------
+
+# **IMPORTANTE:** Cloudflare Pages inyecta el 'nonce-' automáticamente. 
+# Si el 'nonce-' causa problemas, prueba a quitarlo de las directivas 
+# 'script-src'/'script-src-elem' y 'style-src'/'style-src-elem', 
+# ya que Cloudflare lo añade al resultado final.
+# Mantenemos las directivas 'unsafe-inline' y 'unsafe-eval' (este último para Rocket Loader).
+
+Content-Security-Policy: default-src 'self' https://www.dellasantina.com.ar; 
+  script-src 'self' 'unsafe-eval' 'nonce-' https://static.cloudflareinsights.com https://www.clarity.ms https://scripts.clarity.ms https://www.clarity.ms/tag/; 
+  script-src-elem 'self' 'unsafe-eval' 'nonce-' https://static.cloudflareinsights.com https://www.clarity.ms https://scripts.clarity.ms https://www.clarity.ms/tag/; 
+  style-src 'self' 'unsafe-inline' 'nonce-' https://fonts.googleapis.com; 
+  style-src-elem 'self' 'unsafe-inline' 'nonce-' https://fonts.googleapis.com; 
+  img-src 'self' data: https:; 
+  font-src 'self' https://fonts.gstatic.com; 
+  connect-src 'self' https://static.cloudflareinsights.com https://a.clarity.ms https://b.clarity.ms https://c.clarity.ms https://d.clarity.ms https://e.clarity.ms https://f.clarity.ms https://g.clarity.ms https://h.clarity.ms https://i.clarity.ms https://j.clarity.ms https://k.clarity.ms https://l.clarity.ms https://m.clarity.ms https://n.clarity.ms https://o.clarity.ms https://p.clarity.ms https://q.clarity.ms https://r.clarity.ms https://s.clarity.ms https://t.clarity.ms https://u.clarity.ms https://v.clarity.ms https://w.clarity.ms https://x.clarity.ms; 
+  manifest-src 'self'; 
+  form-action 'self'; 
+  base-uri 'self'; 
+  object-src 'none'; 
+  frame-ancestors 'none'; 
+  # report-uri /csp-report-endpoint; # Descomenta si tienes configurado un endpoint
+  # report-to csp-endpoint # Descomenta si tienes configurado un endpoint
