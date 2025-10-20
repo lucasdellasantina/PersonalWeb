@@ -4,10 +4,10 @@
   # ----------------------------------------------------------------------
   
   # Content Security Policy (CSP)
-  # Se han eliminado 'unsafe-inline' y 'unsafe-eval' de script-src para máxima seguridad.
+  # Se ha ajustado para compatibilidad con Cloudflare Rocket Loader (usando 'unsafe-eval').
   Content-Security-Policy: default-src 'self' https://www.dellasantina.com.ar; 
-    script-src 'self' https://static.cloudflareinsights.com https://www.clarity.ms https://scripts.clarity.ms; 
-    script-src-elem 'self' https://static.cloudflareinsights.com https://www.clarity.ms https://scripts.clarity.ms; 
+    script-src 'self' https://static.cloudflareinsights.com https://www.clarity.ms https://scripts.clarity.ms 'unsafe-eval'; 
+    script-src-elem 'self' https://static.cloudflareinsights.com https://www.clarity.ms https://scripts.clarity.ms 'unsafe-eval'; 
     style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; 
     style-src-elem 'self' 'unsafe-inline' https://fonts.googleapis.com; 
     img-src 'self' data: https:; 
@@ -39,4 +39,3 @@
 # Caché para las páginas HTML (se revalida más a menudo)
 /
   Cache-Control: public, max-age=3600, must-revalidate
-
