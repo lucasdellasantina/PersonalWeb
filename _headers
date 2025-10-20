@@ -2,30 +2,6 @@
 # ----------------------------------------------------------------------
 # SEGURIDAD - Encabezados críticos
 # ----------------------------------------------------------------------
-
-# Encabezados de Seguridad
-X-Frame-Options: DENY
-X-Content-Type-Options: nosniff
-Referrer-Policy: strict-origin-when-cross-origin
-Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=()
-X-DNS-Prefetch-Control: on
-Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
-
-# ----------------------------------------------------------------------
-# Rendimiento / Caché
-# ----------------------------------------------------------------------
-
-/assets/*
-Cache-Control: public, max-age=31536000, immutable
-
-/
-Cache-Control: public, max-age=3600, must-revalidate
-
-# ----------------------------------------------------------------------
-# CSP ADAPTADO para Cloudflare Pages, Rocket Loader y Clarity
-# ----------------------------------------------------------------------
-
-# Mantenemos las directivas 'unsafe-inline' y 'unsafe-eval' (este último para Rocket Loader).
 Content-Security-Policy: 
   default-src 'self' https://www.dellasantina.com.ar; 
   
@@ -49,3 +25,27 @@ Content-Security-Policy:
   # Restricciones básicas de seguridad
   object-src 'none'; 
   frame-ancestors 'none';
+  
+# Encabezados de Seguridad
+X-Frame-Options: DENY
+X-Content-Type-Options: nosniff
+Referrer-Policy: strict-origin-when-cross-origin
+Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=()
+X-DNS-Prefetch-Control: on
+Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+
+# ----------------------------------------------------------------------
+# Rendimiento / Caché
+# ----------------------------------------------------------------------
+
+/assets/*
+Cache-Control: public, max-age=31536000, immutable
+
+/
+Cache-Control: public, max-age=3600, must-revalidate
+
+# ----------------------------------------------------------------------
+# CSP ADAPTADO para Cloudflare Pages, Rocket Loader y Clarity
+# ----------------------------------------------------------------------
+
+# Mantenemos las directivas 'unsafe-inline' y 'unsafe-eval' (este último para Rocket Loader).
